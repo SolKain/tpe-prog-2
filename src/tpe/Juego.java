@@ -8,8 +8,7 @@ public class Juego {
 	Jugador jugador2;
 	
 	
-	public Mazo(Mazo mazo, Jugador jugador1, Jugador jugador2) {
-		super();
+	public Juego(Mazo mazo, Jugador jugador1, Jugador jugador2) {
 		this.mazo = mazo;
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
