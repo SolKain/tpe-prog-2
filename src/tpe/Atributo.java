@@ -18,6 +18,11 @@ public class Atributo {
 		return valor;
 	}
 	
+	public boolean esMayor(Atributo a1, Atributo a2) {
+		//retorna si el valor d un atributo es mayor q el d un segundo atributo
+		return a1.getValor()>a2.getValor();
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		Atributo otroAtr = (Atributo) obj;

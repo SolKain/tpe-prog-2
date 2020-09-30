@@ -52,6 +52,7 @@ public class Carta {
         }
     }
 	
+	
 	@Override
 	public boolean equals(Object obj) {
 		Carta otraCarta = (Carta) obj;

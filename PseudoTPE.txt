@@ -52,6 +52,8 @@ CLASE Carta:
 		-function esIgual(carta aa, cartca bb); ---> chequea que dos cartas no sean iguales
 		-function Atributo getAtributo(String nombre) --> retorna un atributo especifico si es q existe
 		-function boolean tieneAtributo();
+		
+		
 	}
 
 		
@@ -76,5 +78,6 @@ CLASE Atributo(caracteristicas de la carta):
 	Funcionalidades{
 		-getters
 			-setters no irian (no quisieramos q el jugador setee alguna caracteristica ni valor de un atributo)
+		--function boolean esMayor(); -->compara si un atributo es mayor q otro
 	}
 
