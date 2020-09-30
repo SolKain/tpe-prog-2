@@ -53,6 +53,9 @@ public class Carta {
     }
 
 	
+	public int cantidadAtributos() {
+		return atributos.size();
+	}
 	
 	@Override
 	public boolean equals(Object obj) {
