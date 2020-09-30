@@ -5,7 +5,6 @@ public class Juego {
 	Jugador jugador1;
 	Jugador jugador2;
 	
-	
 	public Juego(Mazo mazo, Jugador jugador1, Jugador jugador2) {
 		this.mazo = mazo;
 		this.jugador1 = jugador1;
@@ -32,10 +31,18 @@ public class Juego {
 		this.jugador2 = jugador2;
 	}
 	
-	public void repartirCartas() {
+	}
+	
+	
+	//Repartir las cartas>>>>>
+	//   necesito saber cuantas cartas hay>>>>
+	//         dividirlas a la mitad>>>>
+	//				asignar la primer mitad a jugador1
+	//					aignar la segunda mitad a jugador2
+	
+	public void repartirCartas(Mazo mm, Jugador j1, Jugador j2) {
 		
 	}
-	 public Jugador getGanador() {
-		 
-	 }
+	
+	
 }

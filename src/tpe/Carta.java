@@ -18,25 +18,38 @@ public class Carta {
 		return atributos;
 	}
 
-	public void setAtributos(ArrayList<Atributo> atributos) {
-		this.atributos = atributos;
-	}
-
 	public String getPersonaje() {
 		return personaje;
-	}
-
-	public void setPersonaje(String personaje) {
-		this.personaje = personaje;
 	}
 
 	public Mazo getMazoPerteneciente() {
 		return mazoPerteneciente;
 	}
 
-	public void setMazoPerteneciente(Mazo mazoPerteneciente) {
-		this.mazoPerteneciente = mazoPerteneciente;
+	public void addAtributo(Atributo aa) {
+		atributos.add(aa);
 	}
 	
+	public void removeAtributo(Atributo aa) {
+		atributos.remove(aa);
+	}
+	
+	public Atributo getAtributo(String nombre) {
+		for(int i = 0; i < atributos.size(); i++) {
+			if(atributos.get(i).getNombre().equals(nombre)) 
+				return atributos.get(i);
+			}
+				return null;
+	}
+	
+	public boolean tieneAtributo(String nombre){
+        Atributo aa = this.getAtributo(nombre);
+        if(aa!=null) {
+        	return true;
+        }
+        else {
+        	return false;
+        }
+    }
 	
 }

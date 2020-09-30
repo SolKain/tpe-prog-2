@@ -1,0 +1,79 @@
+CLASES:
+	-JuegoDeCartas
+	-MazoDeCartas
+	-Carta
+	-Jugador
+	-Caracteristicas(atributos de un mazoDeCartas) --> no todos los mazos tienen las mismas caracteristicas
+
+
+CLASE JuegoDeCartas:
+	Atributos{
+		-MazoDeCartas mazo
+		-Jugador Jugador1
+		-Jugador Jugador2	
+	}
+	Funcionalidades{
+		-getters and setters 
+		-function void RepartirCartas(MazoDeCartas); ---> Random reparte todas las cartas de un mazo determinado
+			if((cantidadCartas() % 2 ) != 0) --> jugador1 tendra una carta mas
+		-function Jugador getGanador(); ---> quien mayor cantidad de puntos tenga : Jugador.getPuntos();
+		-function String toString(); ---> Jugador, atributo seleccionado, valores d las cartas de c/jugador, ganador de la ronda, cantidad de cartas	
+	}
+
+
+CLASE MazoDeCartas:
+	Atributos{
+		-ArrayList cartas <Carta>
+		}	
+	Funcionalidades{
+		-function void AddCarta(Carta cc); ---> para que se pueda aniadir carta, los atributos deben ser todos los mismos en todas 
+			if(cantidadCartas == 0){
+				cartas.add(cc);
+			}
+			else{
+				if(nombres de los atributos son los mismos){
+				cartas.add(cc);
+				}				
+			}
+		-function int cantidadCartas();
+		-function boolean perteneceAlMazo(Carta cc); ---> verifica que la carta CC pertenezca al mazo
+		-implementar function equeals() --->  para comparar los atributos de las cartas 
+	}
+	
+	
+CLASE Carta:
+	Atributos{
+		-ArrayList atributos <Atributo>
+		-String Personaje
+		-MazoDeCartas  mazoPerteneciente
+	}
+	Funcionalidades{
+		-function void addAtributo();
+		-function esIgual(carta aa, cartca bb); ---> chequea que dos cartas no sean iguales
+			-implementar function equals();
+	}
+
+		
+CLASE Jugador:
+	Atributos{
+		-String nombre
+		-int puntos 
+	}
+	Funcionalidades{
+		-getters and setters 
+		-function void incrementarPuntos();
+		-seleccionarCarta();
+		-seleccionarAtributo(Cartac cc); ---> una vez que el jugador eligio una carta, debe elegir un atributo de manera aleatoria 
+	}
+
+
+CLASE Atributo(caracteristicas de la carta):
+	Atributos{
+		-String nombre 
+		-int valorNumerico
+	}
+	Funcionalidades{
+		-getters
+			-setters no irian (no quisieramos q el jugador setee alguna caracteristica ni valor de un atributo)
+	}
+
