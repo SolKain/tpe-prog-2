@@ -17,6 +17,12 @@ public class Atributo {
 	public double getValor() {
 		return valor;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Atributo otroAtr = (Atributo) obj;
+		return nombre.equals(otroAtr.nombre);
+	}
 
 	
 

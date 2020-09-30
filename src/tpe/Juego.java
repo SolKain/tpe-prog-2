@@ -31,7 +31,7 @@ public class Juego {
 		this.jugador2 = jugador2;
 	}
 	
-	}
+	
 	
 	
 	//Repartir las cartas>>>>>

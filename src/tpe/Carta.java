@@ -52,4 +52,15 @@ public class Carta {
         }
     }
 	
+	@Override
+	public boolean equals(Object obj) {
+		Carta otraCarta = (Carta) obj;
+		int cantAtributos = 0;
+		for (Atributo atributo : atributos) {
+			if (otraCarta.atributos.contains(atributo))
+				cantAtributos++;
+		}
+		return atributos.size()==otraCarta.atributos.size() && cantAtributos == atributos.size();
+	}
+	
 }
