@@ -51,6 +51,7 @@ public class Carta {
         	return false;
         }
     }
+
 	
 	
 	@Override

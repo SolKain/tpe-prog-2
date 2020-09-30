@@ -1,6 +1,7 @@
 package tpe;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Mazo {
 	private ArrayList<Carta> mazo;
@@ -18,6 +19,7 @@ public class Mazo {
 			mazo.add(carta);
 		}
 	}
+	
 
 	public int cantidadCartas() {
 		return mazo.size();
@@ -32,6 +34,12 @@ public class Mazo {
 		return false;
 		
 	}
+	
+	public List<Carta> dameNCartas(int cantidad){
+	// aca guardas en la lista cantidad de cartas
+		return laLista;
+	}
+	
 }
 		
 
