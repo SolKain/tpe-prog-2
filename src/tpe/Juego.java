@@ -1,7 +1,5 @@
 package tpe;
 
-import java.util.ArrayList;
-
 public class Juego {
 	Mazo mazo;
 	Jugador jugador1;
@@ -16,6 +14,8 @@ public class Juego {
 	public Mazo getMazo() {
 		return mazo;
 	}
+	
+	
 	public void setMazo(Mazo mazo) {
 		this.mazo = mazo;
 	}
@@ -30,6 +30,12 @@ public class Juego {
 	}
 	public void setJugador2(Jugador jugador2) {
 		this.jugador2 = jugador2;
+	}
 	
-
+	public void repartirCartas() {
+		
+	}
+	 public Jugador getGanador() {
+		 
+	 }
 }
