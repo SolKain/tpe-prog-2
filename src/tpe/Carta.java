@@ -56,6 +56,11 @@ public class Carta {
 		return atributos.size();
 	}
 	
+	//busco atributo a traves de un indice q me llega por parametro
+	public Atributo obtenerAtributoPorIndice(int indice) {
+		return atributos.get(indice);
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		Carta otraCarta = (Carta) obj;

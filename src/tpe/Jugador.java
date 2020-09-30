@@ -50,11 +50,18 @@ public class Jugador {
 		return null;
 	}
 	
+	/*
+	 * primero me devuelvo el indice del atributoRandom
+	 * 		una vez que lo obtengo
+	 * 			buscar el atributo que se haya en ese indice
+	 * 				(funcionalidad de carta)
+	 */
 	public Atributo elegirAtributoRandom(Carta c1) {
-		//me va a devolver el indice d uno de los atributos
-		double atributoRandom = (Math.random()* (c1.cantidadAtributos()-1));
-		//debo buscar en X indice, cual es el atributo
+		//tuve que castear el mathRandom a int porque me devolvia un double
+		int atributoRandom = (int) (Math.random()* (c1.cantidadAtributos()-1));
+		Atributo atributoElegido = c1.obtenerAtributoPorIndice(atributoRandom);
 		
+		return atributoElegido;
 	}
 	
 	
