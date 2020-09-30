@@ -23,6 +23,7 @@ public class Atributo {
 		return a1.getValor()>a2.getValor();
 	}
 	
+	
 	@Override
 	public boolean equals(Object obj) {
 		Atributo otroAtr = (Atributo) obj;
