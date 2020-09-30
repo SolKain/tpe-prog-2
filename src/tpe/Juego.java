@@ -32,8 +32,6 @@ public class Juego {
 	}
 	
 	
-	
-	
 	//Repartir las cartas>>>>>
 	//   necesito saber cuantas cartas hay>>>>
 	//         dividirlas a la mitad>>>>
@@ -41,6 +39,24 @@ public class Juego {
 	//					aignar la segunda mitad a jugador2
 	
 	public void repartirCartas(Mazo mm, Jugador j1, Jugador j2) {
+		int cantidadCartas = mm.cantidadCartas();
+		if((cantidadCartas % 2) == 0) {
+			darPrimeraMitad(mm, j1);
+			darSegundaMitad(mm, j2);
+		}else {
+			
+		}
+	}
+	
+	public void darPrimeraMitad(Mazo mm, Jugador j1) {
+		int mitad = mm.cantidadCartas()/2;
+		for(int i=0; i<mitad; i++) {
+			Carta cc = mm.get(i);
+			mm.addCarta(cc);
+		}
+	}
+	
+	public void darSegundaMitad(Mazo mm, Jugador j2) {
 		
 	}
 	

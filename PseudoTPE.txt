@@ -50,7 +50,8 @@ CLASE Carta:
 	Funcionalidades{
 		-function void addAtributo();
 		-function esIgual(carta aa, cartca bb); ---> chequea que dos cartas no sean iguales
-			-implementar function equals();
+		-function Atributo getAtributo(String nombre) --> retorna un atributo especifico si es q existe
+		-function boolean tieneAtributo();
 	}
 
 		

@@ -20,7 +20,7 @@ public class Mazo {
 	}
 
 	public int cantidadCartas() {
-		return this.mazo.size();
+		return mazo.size();
 	}
 
 	public boolean mismosAtributos(Carta carta) {
