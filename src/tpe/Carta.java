@@ -51,6 +51,7 @@ public class Carta {
         	return false;
         }
     }
+
 	
 	public int cantidadAtributos() {
 		return atributos.size();

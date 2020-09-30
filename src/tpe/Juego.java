@@ -1,5 +1,7 @@
 package tpe;
 
+import java.util.List;
+
 public class Juego {
 	Mazo mazo;
 	Jugador jugador1;
@@ -41,22 +43,16 @@ public class Juego {
 	public void repartirCartas(Mazo mm, Jugador j1, Jugador j2) {
 		int cantidadCartas = mm.cantidadCartas();
 		if((cantidadCartas % 2) == 0) {
-			darPrimeraMitad(mm, j1);
-			darSegundaMitad(mm, j2);
+			darMitad(mm, j1);
+			darMitad(mm, j2);
 		}else {
 			
 		}
 	}
 	
-	public void darPrimeraMitad(Mazo mm, Jugador j1) {
+	public void darMitad(Mazo mm, Jugador jugador) {
 		int mitad = mm.cantidadCartas()/2;
-		for(int i=0; i<mitad; i++) {
-			Carta cc = mm.get(i);
-			mm.addCarta(cc);
-		}
-	}
-	
-	public void darSegundaMitad(Mazo mm, Jugador j2) {
+		List<Carta> cartasDeJugador = mm.dameNCartas(mitad);
 		
 	}
 	
