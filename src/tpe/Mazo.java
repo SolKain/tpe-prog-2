@@ -39,8 +39,13 @@ public class Mazo {
 	}
 	
 	public List<Carta> dameNCartas(int cantidad){
-	// aca guardas en la lista cantidad de cartas
-		return laLista;
+		List<Carta> cartasJugador = new ArrayList<>();
+		for (int i=0; i<cantidad; i++) { // por cada carta , cantidad de veces
+			Carta cartaActual = mazo.get(0);
+			mazo.remove(0);
+			cartasJugador.add(cartaActual);
+		}
+		return cartasJugador;
 	}
 	
 	public Carta getCarta() {
