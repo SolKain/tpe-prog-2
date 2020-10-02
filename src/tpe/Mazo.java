@@ -23,6 +23,10 @@ public class Mazo {
 			mazo.add(carta);
 		}
 	}
+	
+	public void removeCarta(Carta cc) {
+		mazo.remove(cc);
+	}
 
 	public int cantidadCartas() {
 		return mazo.size();
@@ -49,8 +53,11 @@ public class Mazo {
 	}
 	
 	public Carta getCarta() {
-		mazo.get(0);	
+		Carta c = mazo.get(0);	
+		return c;
 	}
+	
+}
 		
 		/*   SI QUISIESE RETORNAR UN MAZO
 		Mazo copiaMazo = new Mazo();
@@ -58,9 +65,8 @@ public class Mazo {
 			Carta cc = mazo.get(i);
 			copiaMazo.addCarta(cc);
 		*/		
-	}
 	
-}
+
 		
 
 

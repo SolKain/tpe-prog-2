@@ -57,4 +57,20 @@ public class Jugador {
 		
 		return atributoElegido;
 	}
+	
+	/*
+	 * persona eligio carta
+	 * persona eligio atributo
+	 * verificar q el jugador haya ganado
+	 * agregar la carta del otro jugador a las suyas 
+	 */
+	
+	
+	public void ganador(Carta cc) {
+		this.cartas.addCarta(cc);
+	}
+	
+	public void perdedor(Carta cc) {
+		this.cartas.removeCarta(cc);
+	}
 }
