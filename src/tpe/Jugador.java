@@ -67,10 +67,10 @@ public class Jugador {
 	
 	
 	public void ganador(Carta cc) {
-		this.cartas.addCarta(cc);
+		cartas.addCarta(cc);
 	}
 	
 	public void perdedor(Carta cc) {
-		this.cartas.removeCarta(cc);
+		cartas.removeCarta(cc);
 	}
 }
