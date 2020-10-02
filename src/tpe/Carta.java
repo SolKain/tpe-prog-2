@@ -73,4 +73,8 @@ public class Carta {
 		return atributos.size()==otraCarta.atributos.size() && cantAtributos == atributos.size();
 	}
 	
+	public Carta esMayor(Carta c1, Carta c2) {
+		return c1.getAtributo()
+	}
+	
 }

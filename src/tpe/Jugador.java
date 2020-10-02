@@ -1,15 +1,15 @@
 package tpe;
 
-import java.util.ArrayList;
-
 public class Jugador {
 
 	private String nombre;
 	private double puntos;
+	private Mazo cartas;
 	
 	public Jugador(String nombre) {
 		this.nombre = nombre; 
 		puntos =  0;
+		cartas = new Mazo();
 	}
 
 	public String getNombre() {
@@ -23,10 +23,9 @@ public class Jugador {
 	public double getPuntos() {
 		return puntos;
 	}
-
-
-	public void setPuntos(double puntos) {
-		this.puntos = puntos;
+	
+	public Mazo getCartas(){
+		return cartas;
 	}
 	
 	//jugador selecciona primer carta
@@ -40,7 +39,7 @@ public class Jugador {
 	 */
 	public Carta elegirCarta() {
 		if(this.cartas!=null) {
-			return cartas.get(0);
+			return this.cartas.getCarta();
 		}
 		return null;
 	}
@@ -58,7 +57,4 @@ public class Jugador {
 		
 		return atributoElegido;
 	}
-	
-	
-	
 }
