@@ -57,6 +57,15 @@ public class Carta {
 		return atributos.size();
 	}
 	
+	public double valorDelAtributo(String nombreAtributo) {
+		for (Atributo atributo : atributos) {
+			if (atributo.getNombre().equals(nombreAtributo)) {
+				return atributo.getValor();
+			}
+		}
+		return -1;
+	}
+	
 	//busco atributo a traves de un indice q me llega por parametro
 	public Atributo obtenerAtributoPorIndice(int indice) {
 		return atributos.get(indice);

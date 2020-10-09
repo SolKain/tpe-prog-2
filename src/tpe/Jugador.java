@@ -44,6 +44,10 @@ public class Jugador {
 		return null;
 	}
 	
+	public void addCarta() {
+		
+	}
+	
 	/*
 	 * primero me devuelvo el indice del atributoRandom
 	 * 		una vez que lo obtengo

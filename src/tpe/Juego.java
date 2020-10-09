@@ -60,5 +60,26 @@ public class Juego {
 		return (jugador1.getCartasSize() == 0) || (jugador2.getCartasSize() == 0);
 	}
 	
+	public void compararCartas(Atributo atributoElegido) {
+		Carta cartaJ1 = jugador1.elegirCarta();
+		Carta cartaJ2 = jugador2.elegirCarta();
+
+		double valorCarta1 = cartaJ1.valorDelAtributo(atributoElegido.getNombre());
+		double valorCarta2 = cartaJ2.valorDelAtributo(atributoElegido.getNombre());
+		
+		/*
+		 * Si valor1 > valor2
+		 *    j1 se lleva la carta 2 (agrega la carta 2 a su mazo)
+		 *  si valor2> valor1
+		 *    j2 se lleva la carta 1 (agrega la carta 1 a su mazo)
+		 *  si EMPATAN 
+		 *     mandar las cartas atras del maso
+		 *      elegir nuevo atributo? (COSULTAR)
+		 *     volver a comparar cartas
+		 */
+
+	}
+	
+	
 	
 }
