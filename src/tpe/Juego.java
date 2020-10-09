@@ -53,8 +53,11 @@ public class Juego {
 	}
 	
 	public void darCantidadCartas(Mazo mm, Jugador jugador, int cantidad) {
-		List<Carta> cartasDeJugador = mm.dameNCartas(cantidad);
-		
+		List<Carta> cartasDeJugador = mm.dameNCartas(cantidad);	
+	}
+	
+	public boolean juegoTerminado() {
+		return (jugador1.getCartasSize() == 0) || (jugador2.getCartasSize() == 0);
 	}
 	
 	

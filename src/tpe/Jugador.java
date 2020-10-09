@@ -73,4 +73,8 @@ public class Jugador {
 	public void perdedor(Carta cc) {
 		cartas.removeCarta(cc);
 	}
+	
+	public int getCartasSize() {
+		return this.cartas.cantidadCartas();
+	}
 }
