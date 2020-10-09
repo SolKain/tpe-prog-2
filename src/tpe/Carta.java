@@ -73,4 +73,5 @@ public class Carta {
 		return atributos.size()==otraCarta.atributos.size() && cantAtributos == atributos.size();
 	}
 	
+	
 }

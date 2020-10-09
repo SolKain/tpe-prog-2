@@ -6,6 +6,10 @@ import java.util.List;
 public class Mazo {
 	private ArrayList<Carta> mazo;
 
+	public Mazo() {
+		mazo = new ArrayList<>();
+	}
+	
 	public Mazo(int cantidad) {
 		mazo = new ArrayList<>();
 	}
@@ -20,6 +24,9 @@ public class Mazo {
 		}
 	}
 	
+	public void removeCarta(Carta cc) {
+		mazo.remove(cc);
+	}
 
 	public int cantidadCartas() {
 		return mazo.size();
@@ -45,7 +52,21 @@ public class Mazo {
 		return cartasJugador;
 	}
 	
+	public Carta getCarta() {
+		Carta c = mazo.get(0);	
+		return c;
+	}
+	
 }
+		
+		/*   SI QUISIESE RETORNAR UN MAZO
+		Mazo copiaMazo = new Mazo();
+		for(int i =0; i<mazo.size();i++) {
+			Carta cc = mazo.get(i);
+			copiaMazo.addCarta(cc);
+		*/		
+	
+
 		
 
 
