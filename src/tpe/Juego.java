@@ -68,15 +68,15 @@ public class Juego {
 		double valorCarta2 = cartaJ2.valorDelAtributo(atributoElegido.getNombre());
 		
 		if(valorCarta1>valorCarta2) {
-			
+			jugador1.addCarta(cartaJ2);
 		}else if(valorCarta1<valorCarta2) {
-			
+			jugador2.addCarta(cartaJ1);
 		} else if(valorCarta1==valorCarta2) {
-			//mandar las artas atras del mazo
+			//mandar las cartas atras del mazo
 			compararCartas(atributoElegido);
 		}
 
-		 *      elegir nuevo atributo? (COSULTAR)
+		 //      elegir nuevo atributo? (COSULTAR)
 
 
 	}
