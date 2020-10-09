@@ -42,17 +42,18 @@ public class Juego {
 	
 	public void repartirCartas(Mazo mm, Jugador j1, Jugador j2) {
 		int cantidadCartas = mm.cantidadCartas();
+		int mitad = cantidadCartas/2;
 		if((cantidadCartas % 2) == 0) {
-			darMitad(mm, j1);
-			darMitad(mm, j2);
+			darCantidadCartas(mm, j1, mitad);
+			darCantidadCartas(mm, j2, mitad);
 		}else {
-			
+			darCantidadCartas(mm, j1, mitad+1);
+			darCantidadCartas(mm, j2, mitad);
 		}
 	}
 	
-	public void darMitad(Mazo mm, Jugador jugador) {
-		int mitad = mm.cantidadCartas()/2;
-		List<Carta> cartasDeJugador = mm.dameNCartas(mitad);
+	public void darCantidadCartas(Mazo mm, Jugador jugador, int cantidad) {
+		List<Carta> cartasDeJugador = mm.dameNCartas(cantidad);
 		
 	}
 	
