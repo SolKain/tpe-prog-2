@@ -44,8 +44,8 @@ public class Jugador {
 		return null;
 	}
 	
-	public void addCarta() {
-		
+	public void addCarta(Carta carta) {
+		cartas.addCarta(carta);
 	}
 	
 	/*
