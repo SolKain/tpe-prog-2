@@ -42,10 +42,9 @@ public class Juego {
 		Carta c2 = jugador2.elegirCarta();
 		Atributo a = jugador1.elegirAtributoRandom(c1); 
 		compararCartas(c1, c2, a);
-		//Jugador ganador = getGanador(); //obtengo el ganador, y le doy la carta del perdedor
-		//Jugador perdedor = getPerdedor(); //obtengo el perdedor, y le saco la carta 
-		//deberiamos aca imprimir los toString d las clases
-		
+		Jugador ganador = getGanador(); //obtengo el ganador, y le doy la carta del perdedor
+		Jugador perdedor = getPerdedor(); //obtengo el perdedor, y le saco la carta 
+		mostrarPorConsola(jugador1, jugador2, c1, c2, a, ganador);
 		if(juegoTerminado()){
 			System.out.println("Juego terminado");
 		}
@@ -60,10 +59,11 @@ public class Juego {
 		Carta c2 = perdedor.elegirCarta();
 		Atributo a = ganador.elegirAtributoRandom(c1);
 		compararCartas(c1, c2, a);
-		//Jugador ganador = getGanador(); //obtengo el ganador, y le doy la carta del perdedor
-		//Jugador perdedor = getPerdedor(); //obtengo el perdedor, y le saco la carta q perdio
+		Jugador ganador = getGanador(); //obtengo el ganador, y le doy la carta del perdedor
+		Jugador perdedor = getPerdedor(); //obtengo el perdedor, y le saco la carta q perdio
 		//deberiamos aca imprimir los toString d las clases
-	
+		mostrarPorConsola(ganador, perdedor, c1, c2, a, ganador);
+
 		if(juegoTerminado()){
 			System.out.println("Juego terminado");
 		}
@@ -119,6 +119,28 @@ public class Juego {
 
 
 	}
+		
+	
+	
+	public String mostrarPorConsola(Jugador j1, Jugador j2, Carta c1, Carta c2, Atributo a, Jugador ganador) {
+		return "El jugador " + j1.getNombre() + " selecciona competir por el atributo " +a.getNombre()+
+		"La carta de " + j1.getNombre() + " es " + c1.getPersonaje() + " con " + a.getNombre() + c1.valorDelAtributo(a.getNombre()) +
+		"La carta de " + j2.getNombre() + " es " + c2.getPersonaje() + " con " + a.getNombre() + c2.valorDelAtributo(a.getNombre()) +
+		"Gana la ronda " + ganador.getNombre() +
+		j1.getNombre() + "posee ahora " + j1.getCartasSize() + " cartas y " + j2.getNombre() + " posee ahora " + j2.getCartasSize() + " cartas";
+	}
+	
+	
+	
+	/*
+	 El jugador Juan selecciona competir por el atributo fuerza
+La carta de Juan es Flash con fuerza 840
+La carta de María es Superman con fuerza 2000
+Gana la ronda María.
+María posee ahora 11 cartas y Juan posee ahora 9 cartas
+	 */
+	
+	
 	
 	
 	

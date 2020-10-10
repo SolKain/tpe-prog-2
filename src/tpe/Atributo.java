@@ -28,10 +28,7 @@ public class Atributo {
 	public boolean equals(Object obj) {
 		Atributo otroAtr = (Atributo) obj;
 		return nombre.equals(otroAtr.nombre);
-	}
-
-	
-
+	}	
 	
 	
 }
