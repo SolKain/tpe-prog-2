@@ -1,6 +1,7 @@
 package tpe;
 
 import java.util.List;
+import java.util.Collections;
 
 public class Juego {
 	Mazo mazo;
@@ -33,6 +34,45 @@ public class Juego {
 		this.jugador2 = jugador2;
 	}
 	
+	//ESTE METODO ES SOLAMENTE PARA LA PRIMER RONDA
+	public void jugarPrimeraRonda(){
+		Collections.shuffle(mazo); 
+		repartirCartas(mazo, jugador1, jugador2);
+		Carta c1 = jugador1.elegirCarta();
+		Carta c2 = jugador2.elegirCarta();
+		Atributo a = jugador1.elegirAtributoRandom(c1); //le paso carta que eligio el jugador1
+		compararCartas(c1, c2, a);
+		//Jugador ganador = getGanador(); //obtengo el ganador, y le doy la carta del perdedor
+		//Jugador perdedor = getPerdedor(); //obtengo el perdedor, y le saco la carta 
+		//deberiamos aca imprimir los toString d las clases
+		
+		if(juegoTerminado()){
+			//quien es el jugador que se quedo sin cartas	---> el ultimo perdedor
+			System.out.println("Juego terminado");
+		}
+		else{
+			jugarSiguienteRonda(ganador, perdedor);
+		}
+	}
+	
+	//ESTE VA A SER PARA LAS SIGUIENTES RONDAS
+	public void jugarSiguienteRonda(Jugador ganador, Jugador perdedor){
+		Carta c1 = ganador.elegirCarta();
+		Carta c2 = perdedor.elegirCarta();
+		Atributo a = ganador.elegirAtributoRandom(c1);
+		compararCartas(c1, c2, a);
+		//Jugador ganador = getGanador(); //obtengo el ganador, y le doy la carta del perdedor
+		//Jugador perdedor = getPerdedor(); //obtengo el perdedor, y le saco la carta q perdio
+		//deberiamos aca imprimir los toString d las clases
+	
+		if(juegoTerminado()){
+			System.out.println("Juego terminado");
+		}
+		else{
+			jugarSiguienteRonda(ganador, perdedor); 
+		}
+	}
+		
 	
 	//Repartir las cartas>>>>>
 	//   necesito saber cuantas cartas hay>>>>
@@ -60,19 +100,17 @@ public class Juego {
 		return (jugador1.getCartasSize() == 0) || (jugador2.getCartasSize() == 0);
 	}
 	
-	public void compararCartas(Atributo atributoElegido) {
-		Carta cartaJ1 = jugador1.elegirCarta();
-		Carta cartaJ2 = jugador2.elegirCarta();
+	public void compararCartas(Carta c1, Carta c2, Atributo atributoElegido) {
 
-		double valorCarta1 = cartaJ1.valorDelAtributo(atributoElegido.getNombre());
-		double valorCarta2 = cartaJ2.valorDelAtributo(atributoElegido.getNombre());
+		double valorCarta1 = c1.valorDelAtributo(atributoElegido.getNombre());
+		double valorCarta2 = c2.valorDelAtributo(atributoElegido.getNombre());
 		
 		if(valorCarta1>valorCarta2) {
-			jugador1.ganador(cartaJ2);
-			jugador2.perdedor(cartaJ2);
+			jugador1.ganador(c2);
+			jugador2.perdedor(c2);
 		}else if(valorCarta1<valorCarta2) {
-			jugador2.ganador(cartaJ1);
-			jugador1.perdedor(cartaJ1);
+			jugador2.ganador(c1);
+			jugador1.perdedor(c1);
 		} else if(valorCarta1==valorCarta2) {
 			//mandar las cartas atras del mazo
 			compararCartas(atributoElegido);

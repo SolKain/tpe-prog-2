@@ -81,4 +81,6 @@ public class Jugador {
 	public int getCartasSize() {
 		return this.cartas.cantidadCartas();
 	}
+	
+
 }
