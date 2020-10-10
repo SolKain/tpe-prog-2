@@ -40,14 +40,13 @@ public class Juego {
 		repartirCartas(mazo, jugador1, jugador2);
 		Carta c1 = jugador1.elegirCarta();
 		Carta c2 = jugador2.elegirCarta();
-		Atributo a = jugador1.elegirAtributoRandom(c1); //le paso carta que eligio el jugador1
+		Atributo a = jugador1.elegirAtributoRandom(c1); 
 		compararCartas(c1, c2, a);
 		//Jugador ganador = getGanador(); //obtengo el ganador, y le doy la carta del perdedor
 		//Jugador perdedor = getPerdedor(); //obtengo el perdedor, y le saco la carta 
 		//deberiamos aca imprimir los toString d las clases
 		
 		if(juegoTerminado()){
-			//quien es el jugador que se quedo sin cartas	---> el ultimo perdedor
 			System.out.println("Juego terminado");
 		}
 		else{
