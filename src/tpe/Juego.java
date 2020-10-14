@@ -70,7 +70,7 @@ public class Juego {
 		mostrarPorConsola(ganador, perdedor, c1, c2, a, ganador);
 
 		if(juegoTerminado()){
-			// definir ganador
+			obtenerGanadorTotal();
 			System.out.println("Juego terminado");
 		}
 		else{
@@ -98,7 +98,27 @@ public class Juego {
 	}
 	
 	public boolean juegoTerminado() {
-		return ((jugador1.getCartasSize() == 0) || (jugador2.getCartasSize() == 0)|| (numeroRonda == MAXIMO_RONDAS));
+		return ((perdedorRonda.getCartasSize() == 0) || (ganadorRonda.getCartasSize() == 0)|| (numeroRonda == MAXIMO_RONDAS));
+	}
+	
+	public Jugador obtenerGanadorTotal() {
+		if(numeroRonda == MAXIMO_RONDAS) {
+			if(perdedorRonda.getCartasSize()<ganadorRonda.getCartasSize()){
+				return ganadorRonda;
+				
+			}else if(perdedorRonda.getCartasSize()>ganadorRonda.getCartasSize()) {
+				return perdedorRonda;
+			}else {
+				return null;
+			}
+		}else {
+			if(ganadorRonda.getCartasSize()==0) {
+				return perdedorRonda;
+			}else {
+				return ganadorRonda;
+			}
+		}
+		
 	}
 	
 	public void compararCartas(Carta c1, Carta c2, Atributo atributoElegido) {
@@ -120,7 +140,7 @@ public class Juego {
 			
 		} else if(valorCarta1==valorCarta2) {
 			//mandar las cartas atras del mazo
-			
+			//jugarSiguienteRonda()
 		}
 
 	}
