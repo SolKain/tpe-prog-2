@@ -66,7 +66,7 @@ public class Juego {
 		Atributo atributo = ganadorRonda.elegirAtributoRandom(c1);
 		compararCartas(c1, c2, atributo);
 		numeroRonda++;
-		//deberiamos aca imprimir los toString d las clases
+
 		mostrarPorConsola(c1, c2, atributo);
 
 		if(juegoTerminado()){
@@ -143,30 +143,15 @@ public class Juego {
 			//jugarSiguienteRonda()
 		}
 
-	}
-		
+	}	
 	
 	
 	public String mostrarPorConsola(Carta c1, Carta c2, Atributo atributo) {
-		return "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+
-		"La carta de " + ganadorRonda.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.valorDelAtributo(atributo.getNombre()) +
-		"La carta de " + perdedorRonda.getNombre() + " es " + c2.getPersonaje() + " con " + atributo.getNombre() + c2.valorDelAtributo(atributo.getNombre()) +
-		"Gana la ronda " + ganadorRonda.getNombre() +
+		return "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"/n"+
+		"La carta de " + ganadorRonda.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.valorDelAtributo(atributo.getNombre()) +"/n"+
+		"La carta de " + perdedorRonda.getNombre() + " es " + c2.getPersonaje() + " con " + atributo.getNombre() + c2.valorDelAtributo(atributo.getNombre()) + "/n"+
+		"Gana la ronda " + ganadorRonda.getNombre() + "/n"+
 		ganadorRonda.getNombre() + "posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
 	}
-	
-	
-	
-	/*
-	 El jugador Juan selecciona competir por el atributo fuerza
-La carta de Juan es Flash con fuerza 840
-La carta de María es Superman con fuerza 2000
-Gana la ronda María.
-María posee ahora 11 cartas y Juan posee ahora 9 cartas
-	 */
-	
-	
-	
-	
 	
 }
