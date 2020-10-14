@@ -45,12 +45,13 @@ public class Juego {
 
 		numeroRonda=0;
 		jugarSiguienteRonda();
+	
 
 		Carta c1 = jugador1.elegirCarta();
 		Carta c2 = jugador2.elegirCarta();
 		Atributo atributo = jugador1.elegirAtributoRandom(c1); 
 		compararCartas(c1, c2, atributo);
-		mostrarPorConsola(c1, c2, atributo);
+		mostrarPorConsola(c1, c2, atributo, numeroRonda);
 		if(juegoTerminado()){
 			System.out.println("Juego terminado");
 		}
@@ -67,7 +68,7 @@ public class Juego {
 		compararCartas(c1, c2, atributo);
 		numeroRonda++;
 
-		mostrarPorConsola(c1, c2, atributo);
+		mostrarPorConsola(c1, c2, atributo, numeroRonda);
 
 		if(juegoTerminado()){
 			obtenerGanadorTotal();
@@ -139,15 +140,16 @@ public class Juego {
 			perdedorRonda=jugador1;
 			
 		} else if(valorCarta1==valorCarta2) {
-			//mandar las cartas atras del mazo
-			//jugarSiguienteRonda()
+			//Se mandarian atras del mazo
+			System.out.println("Hubo empate en esta ronda");
+			jugarSiguienteRonda();
 		}
 
 	}	
 	
 	
-	public String mostrarPorConsola(Carta c1, Carta c2, Atributo atributo) {
-		return "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"/n"+
+	public String mostrarPorConsola(Carta c1, Carta c2, Atributo atributo, int numeroRonda) {
+		return "---Ronda numero "+ numeroRonda + "--- /n" + "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"/n"+
 		"La carta de " + ganadorRonda.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.valorDelAtributo(atributo.getNombre()) +"/n"+
 		"La carta de " + perdedorRonda.getNombre() + " es " + c2.getPersonaje() + " con " + atributo.getNombre() + c2.valorDelAtributo(atributo.getNombre()) + "/n"+
 		"Gana la ronda " + ganadorRonda.getNombre() + "/n"+
