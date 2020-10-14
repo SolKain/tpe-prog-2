@@ -50,7 +50,7 @@ public class Juego {
 		Carta c2 = jugador2.elegirCarta();
 		Atributo a = jugador1.elegirAtributoRandom(c1); 
 		compararCartas(c1, c2, a);
-		mostrarPorConsola(jugador1, jugador2, c1, c2, a, ganador);
+		mostrarPorConsola(c1, c2, a);
 		if(juegoTerminado()){
 			System.out.println("Juego terminado");
 		}
@@ -67,7 +67,7 @@ public class Juego {
 		compararCartas(c1, c2, a);
 		numeroRonda++;
 		//deberiamos aca imprimir los toString d las clases
-		mostrarPorConsola(ganador, perdedor, c1, c2, a, ganador);
+		mostrarPorConsola(c1, c2, a);
 
 		if(juegoTerminado()){
 			obtenerGanadorTotal();
@@ -147,12 +147,12 @@ public class Juego {
 		
 	
 	
-	public String mostrarPorConsola(Jugador j1, Jugador j2, Carta c1, Carta c2, Atributo a, Jugador ganador) {
-		return "El jugador " + j1.getNombre() + " selecciona competir por el atributo " +a.getNombre()+
-		"La carta de " + j1.getNombre() + " es " + c1.getPersonaje() + " con " + a.getNombre() + c1.valorDelAtributo(a.getNombre()) +
-		"La carta de " + j2.getNombre() + " es " + c2.getPersonaje() + " con " + a.getNombre() + c2.valorDelAtributo(a.getNombre()) +
-		"Gana la ronda " + ganador.getNombre() +
-		j1.getNombre() + "posee ahora " + j1.getCartasSize() + " cartas y " + j2.getNombre() + " posee ahora " + j2.getCartasSize() + " cartas";
+	public String mostrarPorConsola(Carta c1, Carta c2, Atributo atributo) {
+		return "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+
+		"La carta de " + ganadorRonda.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.valorDelAtributo(atributo.getNombre()) +
+		"La carta de " + perdedorRonda.getNombre() + " es " + c2.getPersonaje() + " con " + atributo.getNombre() + c2.valorDelAtributo(atributo.getNombre()) +
+		"Gana la ronda " + ganadorRonda.getNombre() +
+		ganadorRonda.getNombre() + "posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
 	}
 	
 	
