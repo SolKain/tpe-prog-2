@@ -48,9 +48,9 @@ public class Juego {
 
 		Carta c1 = jugador1.elegirCarta();
 		Carta c2 = jugador2.elegirCarta();
-		Atributo a = jugador1.elegirAtributoRandom(c1); 
-		compararCartas(c1, c2, a);
-		mostrarPorConsola(c1, c2, a);
+		Atributo atributo = jugador1.elegirAtributoRandom(c1); 
+		compararCartas(c1, c2, atributo);
+		mostrarPorConsola(c1, c2, atributo);
 		if(juegoTerminado()){
 			System.out.println("Juego terminado");
 		}
@@ -63,11 +63,11 @@ public class Juego {
 	public void jugarSiguienteRonda(){
 		Carta c1 = ganadorRonda.elegirCarta();
 		Carta c2 = perdedorRonda.elegirCarta();
-		Atributo a = ganadorRonda.elegirAtributoRandom(c1);
-		compararCartas(c1, c2, a);
+		Atributo atributo = ganadorRonda.elegirAtributoRandom(c1);
+		compararCartas(c1, c2, atributo);
 		numeroRonda++;
 		//deberiamos aca imprimir los toString d las clases
-		mostrarPorConsola(c1, c2, a);
+		mostrarPorConsola(c1, c2, atributo);
 
 		if(juegoTerminado()){
 			obtenerGanadorTotal();
@@ -78,20 +78,20 @@ public class Juego {
 		}
 	}
 		
-	public void repartirCartas(Mazo mm, Jugador j1, Jugador j2) {
-		int cantidadCartas = mm.cantidadCartas();
+	public void repartirCartas(Mazo mazo, Jugador j1, Jugador j2) {
+		int cantidadCartas = mazo.cantidadCartas();
 		int mitad = cantidadCartas/2;
 		if((cantidadCartas % 2) == 0) {
-			darCantidadCartas(mm, j1, mitad);
-			darCantidadCartas(mm, j2, mitad);
+			darCantidadCartas(mazo, j1, mitad);
+			darCantidadCartas(mazo, j2, mitad);
 		}else {
-			darCantidadCartas(mm, j1, mitad+1);
-			darCantidadCartas(mm, j2, mitad);
+			darCantidadCartas(mazo, j1, mitad+1);
+			darCantidadCartas(mazo, j2, mitad);
 		}
 	}
 	
-	public void darCantidadCartas(Mazo mm, Jugador jugador, int cantidad) {
-		List<Carta> cartasDeJugador = mm.dameNCartas(cantidad);	
+	public void darCantidadCartas(Mazo mazo, Jugador jugador, int cantidad) {
+		List<Carta> cartasDeJugador = mazo.dameNCartas(cantidad);	
 		for (Carta carta : cartasDeJugador) {
 			jugador.addCarta(carta);
 		}
