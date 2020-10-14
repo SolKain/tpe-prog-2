@@ -1,6 +1,7 @@
 package tpe;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Mazo {
@@ -55,6 +56,10 @@ public class Mazo {
 	public Carta getCarta() {
 		Carta c = mazo.get(0);	
 		return c;
+	}
+	
+	public void mezclar() {
+		Collections.shuffle(mazo);
 	}
 	
 }

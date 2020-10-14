@@ -1,12 +1,16 @@
 package tpe;
 
 import java.util.List;
-import java.util.Collections;
 
 public class Juego {
-	Mazo mazo;
-	Jugador jugador1;
-	Jugador jugador2;
+	private static final int MAXIMO_RONDAS = 10;
+	private Mazo mazo;
+	private Jugador jugador1;
+	private Jugador jugador2;
+	private Jugador ganadorRonda;
+	private Jugador perdedorRonda;
+	private int numeroRonda;
+	
 	
 	public Juego(Mazo mazo, Jugador jugador1, Jugador jugador2) {
 		this.mazo = mazo;
@@ -36,50 +40,32 @@ public class Juego {
 	
 	//ESTE METODO ES SOLAMENTE PARA LA PRIMER RONDA
 	public void jugarPrimeraRonda(){
-		Collections.shuffle(mazo); 
+		mazo.mezclar();
 		repartirCartas(mazo, jugador1, jugador2);
-		Carta c1 = jugador1.elegirCarta();
-		Carta c2 = jugador2.elegirCarta();
-		Atributo a = jugador1.elegirAtributoRandom(c1); //le paso carta que eligio el jugador1
-		compararCartas(c1, c2, a);
-		//Jugador ganador = getGanador(); //obtengo el ganador, y le doy la carta del perdedor
-		//Jugador perdedor = getPerdedor(); //obtengo el perdedor, y le saco la carta 
-		//deberiamos aca imprimir los toString d las clases
-		
-		if(juegoTerminado()){
-			//quien es el jugador que se quedo sin cartas	---> el ultimo perdedor
-			System.out.println("Juego terminado");
-		}
-		else{
-			jugarSiguienteRonda(ganador, perdedor);
-		}
+		numeroRonda=0;
+		jugarSiguienteRonda();
 	}
 	
 	//ESTE VA A SER PARA LAS SIGUIENTES RONDAS
-	public void jugarSiguienteRonda(Jugador ganador, Jugador perdedor){
-		Carta c1 = ganador.elegirCarta();
-		Carta c2 = perdedor.elegirCarta();
-		Atributo a = ganador.elegirAtributoRandom(c1);
+	public void jugarSiguienteRonda(){
+		Carta c1 = ganadorRonda.elegirCarta();
+		Carta c2 = perdedorRonda.elegirCarta();
+		Atributo a = ganadorRonda.elegirAtributoRandom(c1);
 		compararCartas(c1, c2, a);
+		numeroRonda++;
 		//Jugador ganador = getGanador(); //obtengo el ganador, y le doy la carta del perdedor
 		//Jugador perdedor = getPerdedor(); //obtengo el perdedor, y le saco la carta q perdio
 		//deberiamos aca imprimir los toString d las clases
 	
 		if(juegoTerminado()){
+			// definir ganador
 			System.out.println("Juego terminado");
 		}
 		else{
-			jugarSiguienteRonda(ganador, perdedor); 
+			jugarSiguienteRonda(); 
 		}
 	}
 		
-	
-	//Repartir las cartas>>>>>
-	//   necesito saber cuantas cartas hay>>>>
-	//         dividirlas a la mitad>>>>
-	//				asignar la primer mitad a jugador1
-	//					aignar la segunda mitad a jugador2
-	
 	public void repartirCartas(Mazo mm, Jugador j1, Jugador j2) {
 		int cantidadCartas = mm.cantidadCartas();
 		int mitad = cantidadCartas/2;
@@ -94,10 +80,13 @@ public class Juego {
 	
 	public void darCantidadCartas(Mazo mm, Jugador jugador, int cantidad) {
 		List<Carta> cartasDeJugador = mm.dameNCartas(cantidad);	
+		for (Carta carta : cartasDeJugador) {
+			jugador.addCarta(carta);
+		}
 	}
 	
 	public boolean juegoTerminado() {
-		return (jugador1.getCartasSize() == 0) || (jugador2.getCartasSize() == 0);
+		return ((jugador1.getCartasSize() == 0) || (jugador2.getCartasSize() == 0)|| (numeroRonda == MAXIMO_RONDAS));
 	}
 	
 	public void compararCartas(Carta c1, Carta c2, Atributo atributoElegido) {
@@ -108,16 +97,19 @@ public class Juego {
 		if(valorCarta1>valorCarta2) {
 			jugador1.ganador(c2);
 			jugador2.perdedor(c2);
+			ganadorRonda=jugador1;
+			perdedorRonda=jugador2;
+			
 		}else if(valorCarta1<valorCarta2) {
 			jugador2.ganador(c1);
 			jugador1.perdedor(c1);
+			ganadorRonda=jugador2;
+			perdedorRonda=jugador1;
+			
 		} else if(valorCarta1==valorCarta2) {
 			//mandar las cartas atras del mazo
-			compararCartas(atributoElegido);
+			
 		}
-
-		 //      elegir nuevo atributo? (COSULTAR)
-
 
 	}
 	

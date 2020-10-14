@@ -8,7 +8,7 @@ public class Jugador {
 	
 	public Jugador(String nombre) {
 		this.nombre = nombre; 
-		puntos =  0;
+		puntos = 0;
 		cartas = new Mazo();
 	}
 
