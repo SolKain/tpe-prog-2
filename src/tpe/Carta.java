@@ -7,15 +7,24 @@ public class Carta {
 	private ArrayList <Atributo> atributos;
 	private String personaje;
 	private Mazo mazoPerteneciente;
+	private Pocima pocima;
 	
 	public Carta(String personaje, Mazo mazoPerteneciente) {
 		this.personaje = personaje;
 		this.mazoPerteneciente = mazoPerteneciente;
 		atributos = new ArrayList <Atributo>();
+		pocima = null;
 	}
 
 	public ArrayList<Atributo> getAtributos() {
 		return atributos;
+	}
+	
+	public void setPocima(Pocima pocimaNueva) {
+		if(pocima == null) {
+			pocima = pocimaNueva;
+			pocimaNueva.aplicarPocima(this);
+		}
 	}
 
 	public String getPersonaje() {
