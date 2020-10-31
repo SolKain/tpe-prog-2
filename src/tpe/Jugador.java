@@ -5,11 +5,13 @@ public class Jugador {
 	private String nombre;
 	private double puntos;
 	private Mazo cartas;
+	private Estrategia estrategiaJuego;
 	
-	public Jugador(String nombre) {
+	public Jugador(String nombre, Estrategia estrategiaJuego) {
 		this.nombre = nombre; 
 		puntos = 0;
 		cartas = new Mazo();
+		this.estrategiaJuego = estrategiaJuego;
 	}
 
 	public String getNombre() {
@@ -22,6 +24,15 @@ public class Jugador {
 
 	public double getPuntos() {
 		return puntos;
+	}
+	
+	public Estrategia getEstrategia() {
+		return estrategiaJuego;
+	}
+	
+	//setea la estrategia para poder cambiar en tiempo de ejecucion
+	public void setEstrategia(Estrategia estrategia) {
+		estrategiaJuego = estrategia;
 	}
 	
 	public Mazo getCartas(){
@@ -48,26 +59,10 @@ public class Jugador {
 		cartas.addCarta(carta);
 	}
 	
-	/*
-	 * primero me devuelvo el indice del atributoRandom
-	 * 		una vez que lo obtengo
-	 * 			buscar el atributo que se haya en ese indice
-	 * 				(funcionalidad de carta)
-	 */
-	public Atributo elegirAtributoRandom(Carta c1) {
-		//tuve que castear el mathRandom a int porque me devolvia un double
-		int atributoRandom = (int) (Math.random()* (c1.cantidadAtributos()-1));
-		Atributo atributoElegido = c1.obtenerAtributoPorIndice(atributoRandom);
-		
-		return atributoElegido;
-	}
 	
-	/*
-	 * persona eligio carta
-	 * persona eligio atributo
-	 * verificar q el jugador haya ganado
-	 * agregar la carta del otro jugador a las suyas 
-	 */
+	public Atributo aplicarEstrategia(Carta carta1) {
+		return estrategiaJuego.elegirAtributo(carta1);
+	}
 	
 	
 	public void ganador(Carta cc) {

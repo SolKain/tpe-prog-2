@@ -6,9 +6,11 @@ import java.util.List;
 
 public class Mazo {
 	private ArrayList<Carta> mazo;
+	private ArrayList<Pocima> pocimas;
 
 	public Mazo() {
-		mazo = new ArrayList<>();
+		mazo = new ArrayList<Carta>();
+		pocimas = new ArrayList<Pocima>();
 	}
 	
 	public Mazo(int cantidad) {
@@ -23,6 +25,10 @@ public class Mazo {
 		if (mazo.isEmpty() || mismosAtributos(carta)) {
 			mazo.add(carta);
 		}
+	}
+	
+	public void addPocima(Pocima pocima) {
+		pocimas.add(pocima);
 	}
 	
 	public void removeCarta(Carta cc) {
@@ -62,14 +68,13 @@ public class Mazo {
 		Collections.shuffle(mazo);
 	}
 	
+	public void aplicarPocima() {		
+		
+	}
+	
 }
 		
-		/*   SI QUISIESE RETORNAR UN MAZO
-		Mazo copiaMazo = new Mazo();
-		for(int i =0; i<mazo.size();i++) {
-			Carta cc = mazo.get(i);
-			copiaMazo.addCarta(cc);
-		*/		
+		
 	
 
 		

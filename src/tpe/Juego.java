@@ -49,7 +49,7 @@ public class Juego {
 
 		Carta c1 = jugador1.elegirCarta();
 		Carta c2 = jugador2.elegirCarta();
-		Atributo atributo = jugador1.elegirAtributoRandom(c1); 
+		Atributo atributo = jugador1.aplicarEstrategia(c1); 
 		compararCartas(c1, c2, atributo);
 		mostrarPorConsola(c1, c2, atributo, numeroRonda);
 		if(juegoTerminado()){
@@ -64,7 +64,7 @@ public class Juego {
 	public void jugarSiguienteRonda(){
 		Carta c1 = ganadorRonda.elegirCarta();
 		Carta c2 = perdedorRonda.elegirCarta();
-		Atributo atributo = ganadorRonda.elegirAtributoRandom(c1);
+		Atributo atributo = ganadorRonda.aplicarEstrategia(c1);
 		compararCartas(c1, c2, atributo);
 		numeroRonda++;
 
