@@ -80,6 +80,9 @@ public class Juego {
 	}
 		
 	public void repartirCartas(Mazo mazo, Jugador j1, Jugador j2) {
+		//antes de repartir tengo que aplicar la pocima
+		mazo.aplicarPocima();
+		//ahora reparto
 		int cantidadCartas = mazo.cantidadCartas();
 		int mitad = cantidadCartas/2;
 		if((cantidadCartas % 2) == 0) {
