@@ -59,11 +59,9 @@ public class Jugador {
 		cartas.addCarta(carta);
 	}
 	
-	
 	public Atributo aplicarEstrategia(Carta carta1) {
 		return estrategiaJuego.elegirAtributo(carta1);
 	}
-	
 	
 	public void ganador(Carta cc) {
 		cartas.addCarta(cc);
