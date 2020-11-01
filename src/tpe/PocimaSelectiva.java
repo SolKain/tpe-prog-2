@@ -7,7 +7,8 @@ public class PocimaSelectiva extends Pocima {
 	private double incremento;
 	private String nombre;
 	
-	public PocimaSelectiva(String nombre, double incremento) {
+	public PocimaSelectiva(String nombrePocima, String nombre, double incremento) {
+		super(nombrePocima);
 		this.incremento = incremento;
 		this.nombre = nombre;
 	}
@@ -24,7 +25,6 @@ public class PocimaSelectiva extends Pocima {
 		
 		return carta;
 	}
-
 
 	public void setValorAplicado(double valor) {
 		incremento = valor;

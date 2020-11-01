@@ -6,7 +6,8 @@ public class PocimaValorFijo extends Pocima {
 
 	private double valorAplicado;
 	
-	public PocimaValorFijo(double valorAplicado) {
+	public PocimaValorFijo(String nombrePocima, double valorAplicado) {
+		super(nombrePocima);
 		this.valorAplicado = valorAplicado;
 	}
 	

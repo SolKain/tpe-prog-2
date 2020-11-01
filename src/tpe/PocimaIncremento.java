@@ -6,7 +6,8 @@ public class PocimaIncremento extends Pocima {
 
 	private double valorAplicado;
 	
-	public PocimaIncremento(double valorAplicado) {
+	public PocimaIncremento(String nombrePocima, double valorAplicado) {
+		super(nombrePocima);
 		this.valorAplicado = valorAplicado;
 	}
 	

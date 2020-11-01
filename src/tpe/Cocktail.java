@@ -6,7 +6,8 @@ public class Cocktail extends Pocima {
 
 	private ArrayList<Pocima> pocimas;
 	
-	public Cocktail() {
+	public Cocktail(String nombrePocima) {
+		super(nombrePocima);
 		pocimas = new ArrayList<Pocima>();
 	}
 	@Override
