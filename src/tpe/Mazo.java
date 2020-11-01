@@ -77,18 +77,14 @@ public class Mazo {
 		//por una carta, aplico una pocima 
 		//una vez que aplique la pocima, la elimino del mazo
 		
-		
 		for(Pocima pocima: pocimas) {
 			for(Carta carta: mazo) {
-				if(pocimas.size() != 0) {
-					//no se si es necesario
-					//seria para que no quede corriendo una vez que se terminen las pocimas 
-					pocima.aplicarPocima(carta);
-					pocimas.remove(pocima);
-				}
+				//cuando setea la pocima, tambien la aplica
+				carta.setPocima(pocima);
 			}
 		}
 	}
+	
 	
 }
 		

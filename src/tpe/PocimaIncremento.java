@@ -2,11 +2,11 @@ package tpe;
 
 import java.util.ArrayList;
 
-public class PocimaSimple extends Pocima {
+public class PocimaIncremento extends Pocima {
 
 	private double valorAplicado;
 	
-	public PocimaSimple(double valorAplicado) {
+	public PocimaIncremento(double valorAplicado) {
 		this.valorAplicado = valorAplicado;
 	}
 	

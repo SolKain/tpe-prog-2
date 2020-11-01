@@ -39,10 +39,6 @@ public class Jugador {
 		return cartas;
 	}
 	
-	//jugador selecciona primer carta
-	//jugador selecciona atributo random
-	
-	
 	/*para elegir una carta
 	 *	tiene que chequear q tiene cartas
 	 *		si tiene

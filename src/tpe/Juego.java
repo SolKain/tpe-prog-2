@@ -44,8 +44,7 @@ public class Juego {
 		repartirCartas(mazo, jugador1, jugador2);
 
 		numeroRonda=0;
-		jugarSiguienteRonda();
-	
+		jugarSiguienteRonda();	
 
 		Carta c1 = jugador1.elegirCarta();
 		Carta c2 = jugador2.elegirCarta();
@@ -150,10 +149,9 @@ public class Juego {
 
 	}	
 	
-	
 	public String mostrarPorConsola(Carta c1, Carta c2, Atributo atributo, int numeroRonda) {
 		return "---Ronda numero "+ numeroRonda + "--- /n" + "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"/n"+
-		"La carta de " + ganadorRonda.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.valorDelAtributo(atributo.getNombre()) +"/n"+
+		"La carta de " + ganadorRonda.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.valorDelAtributo(atributo.getNombre()) +", se aplico la pocima "+ c1.getPocima()+"/n"+
 		"La carta de " + perdedorRonda.getNombre() + " es " + c2.getPersonaje() + " con " + atributo.getNombre() + c2.valorDelAtributo(atributo.getNombre()) + "/n"+
 		"Gana la ronda " + ganadorRonda.getNombre() + "/n"+
 		ganadorRonda.getNombre() + "posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";

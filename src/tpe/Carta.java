@@ -21,10 +21,13 @@ public class Carta {
 	}
 	
 	public void setPocima(Pocima pocimaNueva) {
-		if(pocima == null) {
 			pocima = pocimaNueva;
 			pocimaNueva.aplicarPocima(this);
-		}
+		
+	}
+	
+	public Pocima getPocima() {
+		return pocima;
 	}
 
 	public String getPersonaje() {
