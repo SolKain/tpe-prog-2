@@ -3,7 +3,7 @@ package tpe;
 import java.util.List;
 
 public class Juego {
-	private static final int MAXIMO_RONDAS = 100;
+	private static final int MAXIMO_RONDAS = 1000;
 	private Mazo mazo;
 	private Jugador jugador1;
 	private Jugador jugador2;
@@ -134,7 +134,6 @@ public class Juego {
 			ganadorRonda.getCartas().mandarPrimerCartaAlFinal();
 			perdedorRonda.getCartas().mandarPrimerCartaAlFinal();
 			System.out.println("Hubo empate en esta ronda");
-			jugarSiguienteRonda();
 		}
 	}
 	private void intercambiarGanador() {

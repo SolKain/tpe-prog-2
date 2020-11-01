@@ -10,6 +10,10 @@ public class Cocktail extends Pocima {
 		super(nombrePocima);
 		pocimas = new ArrayList<Pocima>();
 	}
+	
+	public void addPocima(Pocima pocima) {
+		pocimas.add(pocima);
+	}
 	@Override
 	public Carta aplicarPocima(Carta carta) {
 		
