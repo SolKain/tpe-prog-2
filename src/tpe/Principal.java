@@ -5,8 +5,9 @@ public class Principal {
 	public static void main(String[] args) {
 		
 		Mazo mazo = new Mazo();
-		VisorMazo visor = new VisorMazo();
-		visor.cargarMazo("superheroes.json", mazo);
+		mazo.addPocima(new PocimaValorFijo(200));
+
+		VisorMazo.cargarMazo("superheroes.json", mazo);
 		
 		Ambicioso ambicioso1 = new Ambicioso();
 		Ambicioso ambicioso2 = new Ambicioso();
@@ -17,7 +18,6 @@ public class Principal {
 		
 		Juego jugar = new Juego(mazo, jugador1, jugador2);
 		jugar.jugarPrimeraRonda();
-		jugar.jugarSiguienteRonda();
 		
 	}
 

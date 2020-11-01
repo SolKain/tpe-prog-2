@@ -3,7 +3,7 @@ package tpe;
 import java.util.List;
 
 public class Juego {
-	private static final int MAXIMO_RONDAS = 10;
+	private static final int MAXIMO_RONDAS = 100;
 	private Mazo mazo;
 	private Jugador jugador1;
 	private Jugador jugador2;
@@ -22,7 +22,6 @@ public class Juego {
 	public Mazo getMazo() {
 		return mazo;
 	}
-	
 	
 	public void setMazo(Mazo mazo) {
 		this.mazo = mazo;
@@ -57,11 +56,11 @@ public class Juego {
 		compararCartas(c1, c2, atributo);
 		numeroRonda++;
 
-		mostrarPorConsola(c1, c2, atributo, numeroRonda);
+		System.out.println(mostrarPorConsola(c1, c2, atributo, numeroRonda));
 
 		if(juegoTerminado()){
-			obtenerGanadorTotal();
 			System.out.println("Juego terminado");
+			System.out.println("El ganador es " + obtenerGanadorTotal().getNombre());
 		}
 		else{
 			jugarSiguienteRonda(); 
@@ -114,37 +113,45 @@ public class Juego {
 		
 	}
 	
-	public void compararCartas(Carta c1, Carta c2, Atributo atributoElegido) {
+	public void compararCartas(Carta cartaGanador, Carta cartaPerdedor, Atributo atributoElegido) {
 
-		double valorCarta1 = c1.valorDelAtributo(atributoElegido.getNombre());
-		double valorCarta2 = c2.valorDelAtributo(atributoElegido.getNombre());
+		double valorCartaGan = cartaGanador.valorDelAtributo(atributoElegido.getNombre());
+		double valorCartaPer = cartaPerdedor.valorDelAtributo(atributoElegido.getNombre());
 		
-		if(valorCarta1>valorCarta2) {
-			jugador1.ganador(c2);
-			jugador2.perdedor(c2);
-			ganadorRonda=jugador1;
-			perdedorRonda=jugador2;
+		if(valorCartaGan>valorCartaPer) {
+			ganadorRonda.ganador(cartaPerdedor);
+			perdedorRonda.perdedor(cartaPerdedor);			
+		}else if(valorCartaGan<valorCartaPer) {
+			perdedorRonda.ganador(cartaGanador);
+			ganadorRonda.perdedor(cartaGanador);
+			intercambiarGanador();
 			
-		}else if(valorCarta1<valorCarta2) {
-			jugador2.ganador(c1);
-			jugador1.perdedor(c1);
-			ganadorRonda=jugador2;
-			perdedorRonda=jugador1;
-			
-		} else if(valorCarta1==valorCarta2) {
-			//Se mandarian atras del mazo
+		} else if(valorCartaGan==valorCartaPer) {
+			//TODO Se mandarian atras del mazo
 			System.out.println("Hubo empate en esta ronda");
 			jugarSiguienteRonda();
 		}
 
+	}
+	private void intercambiarGanador() {
+		Jugador jugadorTemporal = ganadorRonda;
+		ganadorRonda=perdedorRonda;
+		perdedorRonda=jugadorTemporal;
 	}	
 	
 	public String mostrarPorConsola(Carta c1, Carta c2, Atributo atributo, int numeroRonda) {
-		return "---Ronda numero "+ numeroRonda + "--- /n" + "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"/n"+
-		"La carta de " + ganadorRonda.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.obtenerValorAnterior(atributo.getNombre()) +", se aplico la pocima "+ c1.getPocima()+ " Con valor resultante "+ c1.valorDelAtributo(atributo.getNombre())+"/n"+
-		"La carta de " + perdedorRonda.getNombre() + " es " + c2.getPersonaje() + " con " + atributo.getNombre() + c2.obtenerValorAnterior(atributo.getNombre()) + "/n"+
-		"Gana la ronda " + ganadorRonda.getNombre() + "/n"+
-		ganadorRonda.getNombre() + "posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
+		String linea1 = "---Ronda numero "+ numeroRonda + "--- \n" + "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"\n";
+		String linea2 = calcularMensaje(c1, atributo, ganadorRonda);
+		String linea3 = calcularMensaje(c2, atributo, perdedorRonda);
+		String linea4= "Gana la ronda " + ganadorRonda.getNombre() + "\n";
+	    String linea5= ganadorRonda.getNombre() + "posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
+	    return linea1 + linea2 + linea3 + linea4 + linea5;
+	}
+	private String calcularMensaje(Carta c1, Atributo atributo, Jugador jugador) {
+		String linea2 = "La carta de " + jugador.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.obtenerValorAnterior(atributo.getNombre());
+		if (c1.getPocima()!=null)
+			return linea2 + ", se aplico la pocima "+ c1.getPocima()+ " Con valor resultante "+ c1.valorDelAtributo(atributo.getNombre())+"\n";
+		return linea2 + "\n";
 	}
 	
 }

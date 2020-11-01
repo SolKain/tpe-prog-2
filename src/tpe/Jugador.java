@@ -61,6 +61,7 @@ public class Jugador {
 	
 	public void ganador(Carta cc) {
 		cartas.addCarta(cc);
+		//TODO mandar patras la primera carta
 	}
 	
 	public void perdedor(Carta cc) {

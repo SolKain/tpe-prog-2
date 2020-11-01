@@ -91,6 +91,15 @@ public class Carta {
 			if (otraCarta.atributos.contains(atributo))
 				cantAtributos++;
 		}
+		return otraCarta.personaje.equals(personaje) && atributos.size()==otraCarta.atributos.size() && cantAtributos == atributos.size();
+	}
+	
+	public boolean mismosAtributos(Carta otraCarta) {
+		int cantAtributos = 0;
+		for (Atributo atributo : atributos) {
+			if (otraCarta.atributos.contains(atributo))
+				cantAtributos++;
+		}
 		return atributos.size()==otraCarta.atributos.size() && cantAtributos == atributos.size();
 	}
 	

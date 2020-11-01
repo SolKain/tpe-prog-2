@@ -40,12 +40,7 @@ public class Mazo {
 	}
 
 	public boolean mismosAtributos(Carta carta) {
-		if(!(mazo.isEmpty())) {
-			if(mazo.get(0).equals(carta)){
-				return true;
-			}
-		} 
-		return false;
+		return (!(mazo.isEmpty()) && mazo.get(0).mismosAtributos(carta));
 		
 	}
 	
