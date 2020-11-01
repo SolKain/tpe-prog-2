@@ -127,7 +127,6 @@ public class Juego {
 			intercambiarGanador();
 			
 		} else if(valorCartaGan==valorCartaPer) {
-			//TODO Se mandarian atras del mazo
 			ganadorRonda.getCartas().mandarCartaAlFinal(cartaGanador);
 			perdedorRonda.getCartas().mandarCartaAlFinal(cartaPerdedor);
 			System.out.println("Hubo empate en esta ronda");

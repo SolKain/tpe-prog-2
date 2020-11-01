@@ -78,6 +78,8 @@ public class Mazo {
 	}
 	
 	public void mandarCartaAlFinal(Carta carta) {
+		removeCarta(carta);
+		mazo.add(carta);
 	}
 	
 }
