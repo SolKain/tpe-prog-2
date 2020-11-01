@@ -3,7 +3,7 @@ package tpe;
 import java.util.List;
 
 public class Juego {
-	private static final int MAXIMO_RONDAS = 10;
+	private static final int MAXIMO_RONDAS = 100;
 	private Mazo mazo;
 	private Jugador jugador1;
 	private Jugador jugador2;
@@ -53,10 +53,13 @@ public class Juego {
 		Carta c1 = ganadorRonda.elegirCarta();
 		Carta c2 = perdedorRonda.elegirCarta();
 		Atributo atributo = ganadorRonda.aplicarEstrategia(c1);
+		// aca esta el ganador anterior (SOL)
+		System.out.println(mostrarPrimeraParte(c1, c2, atributo, numeroRonda));
 		compararCartas(c1, c2, atributo);
+		// aca el ganador es AGUS
 		numeroRonda++;
 
-		System.out.println(mostrarPorConsola(c1, c2, atributo, numeroRonda));
+		System.out.println(mostrarSegundaParte(c1, c2, atributo));
 
 		if(juegoTerminado()){
 			System.out.println("Juego terminado");
@@ -127,8 +130,8 @@ public class Juego {
 			intercambiarGanador();
 			
 		} else if(valorCartaGan==valorCartaPer) {
-			ganadorRonda.getCartas().mandarCartaAlFinal(cartaGanador);
-			perdedorRonda.getCartas().mandarCartaAlFinal(cartaPerdedor);
+			ganadorRonda.getCartas().mandarPrimerCartaAlFinal();
+			perdedorRonda.getCartas().mandarPrimerCartaAlFinal();
 			System.out.println("Hubo empate en esta ronda");
 			jugarSiguienteRonda();
 		}
@@ -139,15 +142,17 @@ public class Juego {
 		perdedorRonda=jugadorTemporal;
 	}	
 	
+	public String mostrarPrimeraParte(Carta c1, Carta c2, Atributo atributo, int numeroRonda) {
+	String linea1 = "---Ronda numero "+ numeroRonda + "--- \n" + "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"\n";
+	String linea2 = calcularMensaje(c1, atributo, ganadorRonda);
+	String linea3 = calcularMensaje(c2, atributo, perdedorRonda);
+	return linea1 + linea2 + linea3;
+	}
 	
-	
-	public String mostrarPorConsola(Carta c1, Carta c2, Atributo atributo, int numeroRonda) {
-		String linea1 = "---Ronda numero "+ numeroRonda + "--- \n" + "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"\n";
-		String linea2 = calcularMensaje(c1, atributo, ganadorRonda);
-		String linea3 = calcularMensaje(c2, atributo, perdedorRonda);
-		String linea4= "Gana la ronda " + ganadorRonda.getNombre() + "\n";
-	    String linea5= ganadorRonda.getNombre() + "posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
-	    return linea1 + linea2 + linea3 + linea4 + linea5;
+	public String mostrarSegundaParte(Carta c1, Carta c2, Atributo atributo) {
+		String linea1= "Gana la ronda " + ganadorRonda.getNombre() + "\n";
+	    String linea2= ganadorRonda.getNombre() + "posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
+	    return linea1 + linea2;
 	}
 	private String calcularMensaje(Carta c1, Atributo atributo, Jugador jugador) {
 		String linea2 = "La carta de " + jugador.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.obtenerValorAnterior(atributo.getNombre());

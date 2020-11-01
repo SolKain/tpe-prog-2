@@ -61,7 +61,7 @@ public class Jugador {
 	
 	public void ganador(Carta cc) {
 		cartas.addCarta(cc);
-		cartas.mandarCartaAlFinal(cc);
+		cartas.mandarPrimerCartaAlFinal();
 	}
 	
 	public void perdedor(Carta cc) {

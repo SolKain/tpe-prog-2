@@ -3,7 +3,6 @@ package tpe;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class Mazo {
 	private ArrayList<Carta> mazo;
@@ -82,9 +81,10 @@ public class Mazo {
 		pocimas.clear();
 	}
 	
-	public void mandarCartaAlFinal(Carta carta) {
-		removeCarta(carta);
-		mazo.add(carta);
+	public void mandarPrimerCartaAlFinal() {
+		Carta primerCarta = mazo.get(0);
+		removeCarta(primerCarta);
+		mazo.add(primerCarta);
 	}
 	
 }
