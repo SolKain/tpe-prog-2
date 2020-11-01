@@ -6,6 +6,15 @@ public class Principal {
 		
 		Mazo mazo = new Mazo();
 		mazo.addPocima(new PocimaValorFijo(200));
+		mazo.addPocima(new PocimaValorFijo(200));
+		mazo.addPocima(new PocimaValorFijo(200));
+		mazo.addPocima(new PocimaIncremento(1.5));
+		mazo.addPocima(new PocimaIncremento(0.3));
+		mazo.addPocima(new PocimaIncremento(1.1));
+		mazo.addPocima(new PocimaSelectiva("fuerza", 1.5));
+		mazo.addPocima(new PocimaSelectiva("fuerza", 0.7));
+		mazo.addPocima(new PocimaSelectiva("peso", 1.2));
+		mazo.addPocima(new PocimaSelectiva("peso", 0.2));
 
 		VisorMazo.cargarMazo("superheroes.json", mazo);
 		

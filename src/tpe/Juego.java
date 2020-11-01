@@ -128,16 +128,19 @@ public class Juego {
 			
 		} else if(valorCartaGan==valorCartaPer) {
 			//TODO Se mandarian atras del mazo
+			ganadorRonda.getCartas().mandarCartaAlFinal(cartaGanador);
+			perdedorRonda.getCartas().mandarCartaAlFinal(cartaPerdedor);
 			System.out.println("Hubo empate en esta ronda");
 			jugarSiguienteRonda();
 		}
-
 	}
 	private void intercambiarGanador() {
 		Jugador jugadorTemporal = ganadorRonda;
 		ganadorRonda=perdedorRonda;
 		perdedorRonda=jugadorTemporal;
 	}	
+	
+	
 	
 	public String mostrarPorConsola(Carta c1, Carta c2, Atributo atributo, int numeroRonda) {
 		String linea1 = "---Ronda numero "+ numeroRonda + "--- \n" + "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"\n";

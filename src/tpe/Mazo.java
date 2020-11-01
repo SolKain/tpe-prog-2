@@ -68,22 +68,17 @@ public class Mazo {
 	}
 	
 	public void aplicarPocima() {		
-		//tengo que ir recorriendo las pocimas y a la vez las cartas 
-		//por una carta, aplico una pocima 
-		//una vez que aplique la pocima, la elimino del mazo
-		
 		for(Pocima pocima: pocimas) {
 			int indice = (int) Math.random()*(mazo.size()-1);
 			Carta carta = mazo.get(indice);
 				pocima.aplicarPocima(carta);
 				carta.setPocima(pocima);
-				
-			
 		}
-		
 		pocimas.clear();
 	}
 	
+	public void mandarCartaAlFinal(Carta carta) {
+	}
 	
 }
 		
