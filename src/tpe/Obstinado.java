@@ -16,7 +16,7 @@ public class Obstinado implements Estrategia {
 		ArrayList<Atributo> atributos = carta.getAtributos();
 		
 		for(Atributo atributo: atributos) {
-			if(atributo.getNombre().equals(atributo)) {
+			if(atributo.getNombre().equals(this.atributo)) {
 				return atributo;
 			}
 		}

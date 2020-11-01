@@ -78,11 +78,15 @@ public class Mazo {
 		//una vez que aplique la pocima, la elimino del mazo
 		
 		for(Pocima pocima: pocimas) {
-			for(Carta carta: mazo) {
-				//cuando setea la pocima, tambien la aplica
+			int indice = (int) Math.random()*(mazo.size()-1);
+			Carta carta = mazo.get(indice);
+				pocima.aplicarPocima(carta);
 				carta.setPocima(pocima);
-			}
+				
+			
 		}
+		
+		pocimas.clear();
 	}
 	
 	

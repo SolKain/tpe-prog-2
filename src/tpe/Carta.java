@@ -6,36 +6,36 @@ public class Carta {
 
 	private ArrayList <Atributo> atributos;
 	private String personaje;
-	private Mazo mazoPerteneciente;
 	private Pocima pocima;
 	
-	public Carta(String personaje, Mazo mazoPerteneciente) {
+	public Carta(String personaje) {
 		this.personaje = personaje;
-		this.mazoPerteneciente = mazoPerteneciente;
 		atributos = new ArrayList <Atributo>();
-		pocima = null;
 	}
 
 	public ArrayList<Atributo> getAtributos() {
 		return atributos;
 	}
 	
-	public void setPocima(Pocima pocimaNueva) {
-			pocima = pocimaNueva;
-			pocimaNueva.aplicarPocima(this);
-		
+	public double obtenerValorAnterior(String nombreAtributo) {
+		for (Atributo atributo : atributos) {
+			if (atributo.getNombre().equals(nombreAtributo)) {
+				return atributo.getValorAnterior();
+			}
+		}
+		return -1;
 	}
 	
 	public Pocima getPocima() {
 		return pocima;
 	}
 
-	public String getPersonaje() {
-		return personaje;
+	public void setPocima(Pocima pocima) {
+		this.pocima = pocima;
 	}
 
-	public Mazo getMazoPerteneciente() {
-		return mazoPerteneciente;
+	public String getPersonaje() {
+		return personaje;
 	}
 
 	public void addAtributo(Atributo aa) {

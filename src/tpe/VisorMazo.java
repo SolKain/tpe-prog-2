@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 public class VisorMazo {
 
-    public static void mostrarMazo(String jsonFile) {
+    public static void cargarMazo(String jsonFile, Mazo mazo) {
         //URL url = getClass().getResource(jsonFile);
         File jsonInputFile = new File(jsonFile);
         InputStream is;
@@ -23,11 +23,16 @@ public class VisorMazo {
             JsonArray cartas = (JsonArray) reader.readObject().getJsonArray("cartas");
             for (JsonObject carta : cartas.getValuesAs(JsonObject.class)) {
                 String nombreCarta = carta.getString("nombre");
+                Carta nuevaCarta = new Carta(nombreCarta);
                 JsonObject atributos = (JsonObject) carta.getJsonObject("atributos");
                 String atributosStr = "";
-                for (String nombreAtributo:atributos.keySet())
+                for (String nombreAtributo:atributos.keySet()) {
                     atributosStr = atributosStr + nombreAtributo + ": " +
                             atributos.getInt(nombreAtributo) + "; ";
+                    Atributo nuevoAtributo = new Atributo(nombreAtributo, atributos.getInt(nombreAtributo));
+                    nuevaCarta.addAtributo(nuevoAtributo);
+                }
+                mazo.addCarta(nuevaCarta);
                 System.out.println(nombreCarta+"\t\t\t"+atributosStr);
             }
 
@@ -37,11 +42,6 @@ public class VisorMazo {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        String mazoPath = "superheroes.json";
-        VisorMazo.mostrarMazo(mazoPath);
     }
 
 }
