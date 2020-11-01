@@ -15,7 +15,9 @@ public class Juego {
 	public Juego(Mazo mazo, Jugador jugador1, Jugador jugador2) {
 		this.mazo = mazo;
 		this.jugador1 = jugador1;
+		this.ganadorRonda = jugador1;
 		this.jugador2 = jugador2;
+		this.perdedorRonda = jugador2;
 	}
 	public Mazo getMazo() {
 		return mazo;
@@ -45,18 +47,6 @@ public class Juego {
 
 		numeroRonda=0;
 		jugarSiguienteRonda();	
-
-		Carta c1 = jugador1.elegirCarta();
-		Carta c2 = jugador2.elegirCarta();
-		Atributo atributo = jugador1.aplicarEstrategia(c1); 
-		compararCartas(c1, c2, atributo);
-		mostrarPorConsola(c1, c2, atributo, numeroRonda);
-		if(juegoTerminado()){
-			System.out.println("Juego terminado");
-		}
-		else{
-			jugarSiguienteRonda();
-		}
 	}
 	
 	//ESTE VA A SER PARA LAS SIGUIENTES RONDAS

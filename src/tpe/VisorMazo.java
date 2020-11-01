@@ -33,7 +33,7 @@ public class VisorMazo {
                     nuevaCarta.addAtributo(nuevoAtributo);
                 }
                 mazo.addCarta(nuevaCarta);
-                System.out.println(nombreCarta+"\t\t\t"+atributosStr);
+             //   System.out.println(nombreCarta+"\t\t\t"+atributosStr);
             }
 
             reader.close();
