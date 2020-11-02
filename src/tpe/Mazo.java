@@ -3,6 +3,7 @@ package tpe;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Mazo {
 	private ArrayList<Carta> mazo;
@@ -67,9 +68,14 @@ public class Mazo {
 		pocimas.remove(pocima);
 	}
 	
-	public void aplicarPocima() {		
+	public int getCantidadPocimas() {
+		return pocimas.size();
+	}
+	
+	public void aplicarPocima() {	
 		for(Pocima pocima: pocimas) {
-			int indice = (int) Math.random()*(mazo.size()-1);
+			int indice = (int) (Math.random()*mazo.size()-1);
+			System.out.println(indice);
 			Carta carta = mazo.get(indice);
 				pocima.aplicarPocima(carta);
 				carta.setPocima(pocima);
