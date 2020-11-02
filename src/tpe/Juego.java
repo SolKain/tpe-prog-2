@@ -3,7 +3,7 @@ package tpe;
 import java.util.List;
 
 public class Juego {
-	private static final int MAXIMO_RONDAS = 100;
+	private static final int MAXIMO_RONDAS = 10;
 	private Mazo mazo;
 	private Jugador jugador1;
 	private Jugador jugador2;

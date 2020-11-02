@@ -23,11 +23,12 @@ public class Principal {
 		
 		VisorMazo.cargarMazo("superheroes.json", mazo);
 		
-		Ambicioso ambicioso1 = new Ambicioso();
-		Ambicioso ambicioso2 = new Ambicioso();
+		Timbero timb1 = new Timbero();
+		Timbero timb2 = new Timbero();
 		
-		Jugador jugador1 = new Jugador("Sol", ambicioso1);
-		Jugador jugador2 = new Jugador("Agus", ambicioso2);
+		
+		Jugador jugador1 = new Jugador("Sol", timb1);
+		Jugador jugador2 = new Jugador("Agus", timb2);
 		
 		
 		Juego jugar = new Juego(mazo, jugador1, jugador2);

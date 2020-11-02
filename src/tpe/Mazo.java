@@ -75,7 +75,6 @@ public class Mazo {
 	public void aplicarPocima() {	
 		for(Pocima pocima: pocimas) {
 			int indice = (int) (Math.random()*mazo.size()-1);
-			System.out.println(indice);
 			Carta carta = mazo.get(indice);
 				pocima.aplicarPocima(carta);
 				carta.setPocima(pocima);
