@@ -18,6 +18,7 @@ public class Juego {
 		this.ganadorRonda = jugador1;
 		this.jugador2 = jugador2;
 		this.perdedorRonda = jugador2;
+		numeroRonda=0;
 	}
 	public Mazo getMazo() {
 		return mazo;
@@ -63,7 +64,7 @@ public class Juego {
 
 		if(juegoTerminado()){
 			System.out.println("Juego terminado");
-			System.out.println("El ganador es " + obtenerGanadorTotal().getNombre());
+			System.out.println("El ganador del juego es " + obtenerGanadorTotal().getNombre());
 		}
 		else{
 			jugarSiguienteRonda(); 
@@ -151,13 +152,13 @@ public class Juego {
 	
 	public String mostrarSegundaParte(Carta c1, Carta c2, Atributo atributo) {
 		String linea1= "Gana la ronda " + ganadorRonda.getNombre() + "\n";
-	    String linea2= ganadorRonda.getNombre() + "posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
+	    String linea2= ganadorRonda.getNombre() + " posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
 	    return linea1 + linea2;
 	}
 	private String calcularMensaje(Carta c1, Atributo atributo, Jugador jugador) {
-		String linea2 = "La carta de " + jugador.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() + c1.obtenerValorAnterior(atributo.getNombre());
+		String linea2 = "La carta de " + jugador.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() +" " + c1.obtenerValorAnterior(atributo.getNombre());
 		if (c1.getPocima()!=null)
-			return linea2 + ", se aplico la pocima "+ c1.getPocima()+ " Con valor resultante "+ c1.valorDelAtributo(atributo.getNombre())+"\n";
+			return linea2 + ", se aplico la pocima "+ c1.getPocima()+ " con valor resultante "+ c1.valorDelAtributo(atributo.getNombre())+"\n";
 		return linea2 + "\n";
 	}
 	
