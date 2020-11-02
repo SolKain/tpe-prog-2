@@ -30,7 +30,6 @@ public class Jugador {
 		return estrategiaJuego;
 	}
 	
-	//setea la estrategia para poder cambiar en tiempo de ejecucion
 	public void setEstrategia(Estrategia estrategia) {
 		estrategiaJuego = estrategia;
 	}
@@ -39,11 +38,6 @@ public class Jugador {
 		return cartas;
 	}
 	
-	/*para elegir una carta
-	 *	tiene que chequear q tiene cartas
-	 *		si tiene
-	 *			obtenerla --> carta en indice 0 ya q siempre agarra la primera
-	 */
 	public Carta elegirCarta() {
 		if(this.cartas!=null) {
 			return this.cartas.getCarta();
@@ -71,6 +65,5 @@ public class Jugador {
 	public int getCartasSize() {
 		return this.cartas.cantidadCartas();
 	}
-	
 
 }

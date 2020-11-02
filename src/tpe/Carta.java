@@ -63,7 +63,6 @@ public class Carta {
         	return false;
         }
     }
-
 	
 	public int cantidadAtributos() {
 		return atributos.size();
@@ -78,7 +77,6 @@ public class Carta {
 		return -1;
 	}
 	
-	//busco atributo a traves de un indice q me llega por parametro
 	public Atributo obtenerAtributoPorIndice(int indice) {
 		return atributos.get(indice);
 	}
@@ -102,6 +100,4 @@ public class Carta {
 		}
 		return atributos.size()==otraCarta.atributos.size() && cantAtributos == atributos.size();
 	}
-	
-	
 }

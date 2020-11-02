@@ -3,7 +3,7 @@ package tpe;
 import java.util.List;
 
 public class Juego {
-	private static final int MAXIMO_RONDAS = 1000;
+	private static final int MAXIMO_RONDAS = 20;
 	private Mazo mazo;
 	private Jugador jugador1;
 	private Jugador jugador2;
@@ -11,53 +11,28 @@ public class Juego {
 	private Jugador perdedorRonda;
 	private int numeroRonda;
 	
-	
 	public Juego(Mazo mazo, Jugador jugador1, Jugador jugador2) {
 		this.mazo = mazo;
 		this.jugador1 = jugador1;
 		this.ganadorRonda = jugador1;
 		this.jugador2 = jugador2;
 		this.perdedorRonda = jugador2;
-		numeroRonda=0;
-	}
-	public Mazo getMazo() {
-		return mazo;
+		numeroRonda=1;
 	}
 	
-	public void setMazo(Mazo mazo) {
-		this.mazo = mazo;
-	}
-	public Jugador getJugador1() {
-		return jugador1;
-	}
-	public void setJugador1(Jugador jugador1) {
-		this.jugador1 = jugador1;
-	}
-	public Jugador getJugador2() {
-		return jugador2;
-	}
-	public void setJugador2(Jugador jugador2) {
-		this.jugador2 = jugador2;
-	}
-	
-	//ESTE METODO ES SOLAMENTE PARA LA PRIMER RONDA
 	public void jugarPrimeraRonda(){
 		mazo.mezclar();
 		repartirCartas(mazo, jugador1, jugador2);
 
-		numeroRonda=0;
 		jugarSiguienteRonda();	
 	}
 	
-	//ESTE VA A SER PARA LAS SIGUIENTES RONDAS
 	public void jugarSiguienteRonda(){
 		Carta c1 = ganadorRonda.elegirCarta();
 		Carta c2 = perdedorRonda.elegirCarta();
 		Atributo atributo = ganadorRonda.aplicarEstrategia(c1);
-		// aca esta el ganador anterior (SOL)
-		System.out.println(mostrarPrimeraParte(c1, c2, atributo, numeroRonda));
+		System.out.print(mostrarPrimeraParte(c1, c2, atributo, numeroRonda));
 		compararCartas(c1, c2, atributo);
-		// aca el ganador es AGUS
 		numeroRonda++;
 
 		System.out.println(mostrarSegundaParte(c1, c2, atributo));
@@ -72,9 +47,7 @@ public class Juego {
 	}
 		
 	public void repartirCartas(Mazo mazo, Jugador j1, Jugador j2) {
-		//antes de repartir tengo que aplicar la pocima
 		mazo.aplicarPocima();
-		//ahora reparto
 		int cantidadCartas = mazo.cantidadCartas();
 		int mitad = cantidadCartas/2;
 		if((cantidadCartas % 2) == 0) {
@@ -114,7 +87,6 @@ public class Juego {
 				return ganadorRonda;
 			}
 		}
-		
 	}
 	
 	public void compararCartas(Carta cartaGanador, Carta cartaPerdedor, Atributo atributoElegido) {
@@ -136,6 +108,7 @@ public class Juego {
 			System.out.println("Hubo empate en esta ronda");
 		}
 	}
+	
 	private void intercambiarGanador() {
 		Jugador jugadorTemporal = ganadorRonda;
 		ganadorRonda=perdedorRonda;
@@ -154,6 +127,7 @@ public class Juego {
 	    String linea2= ganadorRonda.getNombre() + " posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
 	    return linea1 + linea2;
 	}
+	
 	private String calcularMensaje(Carta c1, Atributo atributo, Jugador jugador) {
 		String linea2 = "La carta de " + jugador.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() +" " + c1.obtenerValorAnterior(atributo.getNombre());
 		if (c1.getPocima()!=null)

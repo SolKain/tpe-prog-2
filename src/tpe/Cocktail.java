@@ -14,6 +14,7 @@ public class Cocktail extends Pocima {
 	public void addPocima(Pocima pocima) {
 		pocimas.add(pocima);
 	}
+	
 	@Override
 	public Carta aplicarPocima(Carta carta) {
 		

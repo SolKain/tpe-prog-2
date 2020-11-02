@@ -27,8 +27,6 @@ public class Atributo {
 	public void setValor(double valor) {
 		this.valor=valor;
 	}
-
-	
 	
 	@Override
 	public boolean equals(Object obj) {
