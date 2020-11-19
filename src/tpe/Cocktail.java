@@ -15,14 +15,17 @@ public class Cocktail extends Pocima {
 		pocimas.add(pocima);
 	}
 	
+	//devolver valor y no atributo 
 	@Override
-	public Carta aplicarPocima(Carta carta) {
-		
+	public double aplicarPocima(Atributo atributo) {
+		double valor = atributo.getValor();
+		Atributo aux = new Atributo("aux", atributo.getValor());
 		for(Pocima pocima: pocimas) {
-			pocima.aplicarPocima(carta);
+			valor += pocima.aplicarPocima(aux);
+			aux.setValor(valor);
 		}
 		
-		return carta;
+		return aux.getValor();
 	}
 
 }

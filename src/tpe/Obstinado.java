@@ -10,11 +10,11 @@ public class Obstinado implements Estrategia {
 		this.atributo = atributo;
 	}
 	
-	public Atributo elegirAtributo(Carta carta) {
-		ArrayList<Atributo> atributos = carta.getAtributos();
+	public String elegirAtributo(Carta carta) {
+		ArrayList<String> atributos = carta.getNombreAtributos();
 		
-		for(Atributo atributo: atributos) {
-			if(atributo.getNombre().equals(this.atributo)) {
+		for(String nombre: atributos) {
+			if(nombre.equals(this.atributo)) {
 				return atributo;
 			}
 		}

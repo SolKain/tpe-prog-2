@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class Ambicioso implements Estrategia {
 	
-	public Atributo elegirAtributo(Carta carta) {
-		ArrayList<Atributo> atributos = carta.getAtributos();
+	public String elegirAtributo(Carta carta) {
+		ArrayList<String> atributos = carta.getNombreAtributos();
 		double grande = 0;
-		Atributo mayor = null;
+		String mayor = null;
 		
-		for(Atributo atributo: atributos) {
-			double valor = atributo.getValor();
+		for(String nombre: atributos) {
+			double valor = carta.getAtributo(nombre).getValor();
 			if(valor>grande) {
 				grande = valor;
-				mayor = atributo;
+				mayor = nombre;
 			}
 		}
 		return mayor;

@@ -2,5 +2,5 @@ package tpe;
 
 public interface Estrategia {
 
-	public Atributo elegirAtributo(Carta carta1);
+	public String elegirAtributo(Carta carta1);
 }

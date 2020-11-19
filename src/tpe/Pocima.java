@@ -8,7 +8,7 @@ public abstract class Pocima {
 		this.nombrePocima = nombrePocima;
 	}
 	
-	public abstract Carta aplicarPocima (Carta carta);
+	public abstract double aplicarPocima (Atributo atributo);
 	
 	public String toString() {
 		return this.nombrePocima;

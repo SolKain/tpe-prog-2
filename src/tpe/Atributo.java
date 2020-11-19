@@ -32,7 +32,11 @@ public class Atributo {
 	public boolean equals(Object obj) {
 		Atributo otroAtr = (Atributo) obj;
 		return nombre.equals(otroAtr.nombre);
-	}	
+	}
+	
+	public double aplicarPocima(Pocima pocima) {
+		return pocima.aplicarPocima(this);
+	}
 	
 	
 }

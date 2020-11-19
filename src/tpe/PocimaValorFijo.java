@@ -1,7 +1,5 @@
 package tpe;
 
-import java.util.ArrayList;
-
 public class PocimaValorFijo extends Pocima {
 
 	private double valorAplicado;
@@ -12,14 +10,10 @@ public class PocimaValorFijo extends Pocima {
 	}
 	
 	@Override
-	public Carta aplicarPocima(Carta carta) {
-		ArrayList<Atributo> atributos = carta.getAtributos();
-		
-		for(Atributo atributo: atributos) {
-			atributo.setValor(valorAplicado);
-		}
-		
-		return carta;
+	public double aplicarPocima(Atributo atributo) {
+		Atributo aux = new Atributo(atributo.getNombre(), atributo.getValor());
+		aux.setValor(valorAplicado);
+		return aux.getValor();
 	}
 
 }

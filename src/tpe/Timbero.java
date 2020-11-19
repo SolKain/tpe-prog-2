@@ -1,11 +1,15 @@
 package tpe;
 
+import java.util.ArrayList;
+
 public class Timbero implements Estrategia {
 	
-	public Atributo elegirAtributo(Carta carta) {
-		int atributoRandom = (int) (Math.random()* (carta.cantidadAtributos()-1));
-		Atributo atributoElegido = carta.obtenerAtributoPorIndice(atributoRandom);
+	public String elegirAtributo(Carta carta) {
+		ArrayList<String> atributos = carta.getNombreAtributos();
 		
-		return atributoElegido;
+		int atributoRandom = (int) (Math.random()* (atributos.size()-1));
+		String nombre = atributos.get(atributoRandom);
+		
+		return nombre;
 	}
 }

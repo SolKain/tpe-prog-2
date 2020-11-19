@@ -13,8 +13,14 @@ public class Carta {
 		atributos = new ArrayList <Atributo>();
 	}
 
-	public ArrayList<Atributo> getAtributos() {
-		return atributos;
+	public ArrayList<String> getNombreAtributos() {
+		ArrayList<String> nombres = new ArrayList<String>();
+		
+		for(Atributo atributo: atributos) {
+			nombres.add(atributo.getNombre());
+		}
+		
+		return nombres;
 	}
 	
 	public double obtenerValorAnterior(String nombreAtributo) {
@@ -99,5 +105,12 @@ public class Carta {
 				cantAtributos++;
 		}
 		return atributos.size()==otraCarta.atributos.size() && cantAtributos == atributos.size();
+	}
+	
+	public void aplicarPocimaACarta(Pocima pocima) {
+		this.setPocima(pocima);
+		for(Atributo atributo: atributos) {
+			atributo.aplicarPocima(pocima);
+		}
 	}
 }

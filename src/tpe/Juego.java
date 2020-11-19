@@ -1,5 +1,6 @@
 package tpe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Juego {
@@ -10,14 +11,16 @@ public class Juego {
 	private Jugador ganadorRonda;
 	private Jugador perdedorRonda;
 	private int numeroRonda;
-	
+	private ArrayList<Pocima> pocimas;
+
 	public Juego(Mazo mazo, Jugador jugador1, Jugador jugador2) {
 		this.mazo = mazo;
 		this.jugador1 = jugador1;
 		this.ganadorRonda = jugador1;
 		this.jugador2 = jugador2;
 		this.perdedorRonda = jugador2;
-		numeroRonda=1;
+		numeroRonda=0;
+		pocimas = new ArrayList<Pocima>();
 	}
 	
 	public void jugarPrimeraRonda(){
@@ -30,16 +33,22 @@ public class Juego {
 	public void jugarSiguienteRonda(){
 		Carta c1 = ganadorRonda.elegirCarta();
 		Carta c2 = perdedorRonda.elegirCarta();
-		Atributo atributo = ganadorRonda.aplicarEstrategia(c1);
-		System.out.print(mostrarPrimeraParte(c1, c2, atributo, numeroRonda));
-		compararCartas(c1, c2, atributo);
+		
+		String nombreAtributo = ganadorRonda.aplicarEstrategia();
+		System.out.print(mostrarPrimeraParte(c1, c2, nombreAtributo, numeroRonda));
+		chequearPocimasParaCartas(c1, c2, nombreAtributo);
 		numeroRonda++;
 
-		System.out.println(mostrarSegundaParte(c1, c2, atributo));
+		System.out.println(mostrarSegundaParte(c1, c2));
 
 		if(juegoTerminado()){
 			System.out.println("Juego terminado");
-			System.out.println("El ganador del juego es " + obtenerGanadorTotal().getNombre());
+			if(huboEmpate()) {
+				System.out.println("Los jugadores empataron");
+			}
+			else {
+				System.out.println("El ganador del juego es " + obtenerGanadorTotal().getNombre());
+			}
 		}
 		else{
 			jugarSiguienteRonda(); 
@@ -47,7 +56,7 @@ public class Juego {
 	}
 		
 	public void repartirCartas(Mazo mazo, Jugador j1, Jugador j2) {
-		mazo.aplicarPocima();
+		this.aplicarPocima();
 		int cantidadCartas = mazo.cantidadCartas();
 		int mitad = cantidadCartas/2;
 		if((cantidadCartas % 2) == 0) {
@@ -89,10 +98,28 @@ public class Juego {
 		}
 	}
 	
-	public void compararCartas(Carta cartaGanador, Carta cartaPerdedor, Atributo atributoElegido) {
-
-		double valorCartaGan = cartaGanador.valorDelAtributo(atributoElegido.getNombre());
-		double valorCartaPer = cartaPerdedor.valorDelAtributo(atributoElegido.getNombre());
+	public void chequearPocimasParaCartas(Carta cartaGanador, Carta cartaPerdedor, String atributoElegido) {
+		double valorCartaGan = 0;
+		double valorCartaPer = 0;
+		
+		if(cartaPerdedor.getPocima()!=null) {
+			valorCartaGan = cartaGanador.getAtributo(atributoElegido).aplicarPocima(cartaGanador.getPocima());
+		}
+		else {
+			valorCartaGan = cartaGanador.valorDelAtributo(atributoElegido);
+		}
+		
+		if(cartaPerdedor.getPocima()!=null) {
+			valorCartaPer = cartaPerdedor.getAtributo(atributoElegido).aplicarPocima(cartaPerdedor.getPocima());
+		}
+		else {
+			valorCartaPer = cartaPerdedor.valorDelAtributo(atributoElegido);
+		}
+		
+		compararCartas(cartaGanador, cartaPerdedor, valorCartaGan, valorCartaPer);
+	}
+	
+	public void compararCartas(Carta cartaGanador, Carta cartaPerdedor, double valorCartaGan, double valorCartaPer) {
 		
 		if(valorCartaGan>valorCartaPer) {
 			ganadorRonda.ganador(cartaPerdedor);
@@ -115,24 +142,50 @@ public class Juego {
 		perdedorRonda=jugadorTemporal;
 	}	
 	
-	public String mostrarPrimeraParte(Carta c1, Carta c2, Atributo atributo, int numeroRonda) {
-	String linea1 = "---Ronda numero "+ numeroRonda + "--- \n" + "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +atributo.getNombre()+"\n";
-	String linea2 = calcularMensaje(c1, atributo, ganadorRonda);
-	String linea3 = calcularMensaje(c2, atributo, perdedorRonda);
+	public String mostrarPrimeraParte(Carta c1, Carta c2, String nombreAtributo, int numeroRonda) {
+	String linea1 = "---Ronda numero "+ numeroRonda + "--- \n" + "El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo " +nombreAtributo+"\n";
+	String linea2 = calcularMensaje(c1, nombreAtributo, ganadorRonda);
+	String linea3 = calcularMensaje(c2, nombreAtributo, perdedorRonda);
 	return linea1 + linea2 + linea3;
 	}
 	
-	public String mostrarSegundaParte(Carta c1, Carta c2, Atributo atributo) {
+	public String mostrarSegundaParte(Carta c1, Carta c2) {
 		String linea1= "Gana la ronda " + ganadorRonda.getNombre() + "\n";
 	    String linea2= ganadorRonda.getNombre() + " posee ahora " + ganadorRonda.getCartasSize() + " cartas y " + perdedorRonda.getNombre() + " posee ahora " + perdedorRonda.getCartasSize() + " cartas";
 	    return linea1 + linea2;
 	}
 	
-	private String calcularMensaje(Carta c1, Atributo atributo, Jugador jugador) {
-		String linea2 = "La carta de " + jugador.getNombre() + " es " + c1.getPersonaje() + " con " + atributo.getNombre() +" " + c1.obtenerValorAnterior(atributo.getNombre());
+	private String calcularMensaje(Carta c1, String nombreAtributo, Jugador jugador) {
+		String linea2 = "La carta de " + jugador.getNombre() + " es " + c1.getPersonaje() + " con " + nombreAtributo +" " + c1.valorDelAtributo(nombreAtributo);
 		if (c1.getPocima()!=null)
-			return linea2 + ", se aplico la pocima "+ c1.getPocima()+ " con valor resultante "+ c1.valorDelAtributo(atributo.getNombre())+"\n";
+			return linea2 + ", se aplico la pocima "+ c1.getPocima()+ " con valor resultante "+ c1.getAtributo(nombreAtributo).aplicarPocima(c1.getPocima()) +"\n";
 		return linea2 + "\n";
 	}
 	
+	
+	public void removePocima(Pocima pocima) {
+		pocimas.remove(pocima);
+	}
+	
+	public int getCantidadPocimas() {
+		return pocimas.size();
+	}
+	
+	public void aplicarPocima() {	
+		for(Pocima pocima: pocimas) {
+			int indice = (int) (Math.random()*mazo.cantidadCartas()-1);
+			Carta carta = mazo.getCartaPorIndice(indice);
+			carta.aplicarPocimaACarta(pocima);	
+			carta.setPocima(pocima);
+		}
+		pocimas.clear();
+	}
+	
+	public void addPocima(Pocima pocima) {
+		pocimas.add(pocima);
+	}
+	
+	public boolean huboEmpate() {
+		return ganadorRonda.getCartasSize() == perdedorRonda.getCartasSize();
+	}
 }
