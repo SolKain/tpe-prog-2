@@ -23,15 +23,6 @@ public class Carta {
 		return nombres;
 	}
 	
-	public double obtenerValorAnterior(String nombreAtributo) {
-		for (Atributo atributo : atributos) {
-			if (atributo.getNombre().equals(nombreAtributo)) {
-				return atributo.getValorAnterior();
-			}
-		}
-		return -1;
-	}
-	
 	public Pocima getPocima() {
 		return pocima;
 	}
@@ -112,5 +103,14 @@ public class Carta {
 		for(Atributo atributo: atributos) {
 			atributo.aplicarPocima(pocima);
 		}
+	}
+	
+	public double obtenerValorFinal(String atributoElegido) {
+		double valorCarta = this.valorDelAtributo(atributoElegido);
+		
+		if(this.getPocima()!=null) {
+			valorCarta = this.getAtributo(atributoElegido).aplicarPocima(this.getPocima());
+		}
+		return valorCarta;
 	}
 }

@@ -36,7 +36,11 @@ public class Juego {
 		
 		String nombreAtributo = ganadorRonda.aplicarEstrategia();
 		System.out.print(mostrarPrimeraParte(c1, c2, nombreAtributo, numeroRonda));
-		chequearPocimasParaCartas(c1, c2, nombreAtributo);
+		
+		double cartaGanador = c1.obtenerValorFinal(nombreAtributo);
+		double cartaPerdedor = c2.obtenerValorFinal(nombreAtributo);
+		
+		compararCartas(c1, c2, cartaGanador, cartaPerdedor);
 		numeroRonda++;
 
 		System.out.println(mostrarSegundaParte(c1, c2));
@@ -98,27 +102,7 @@ public class Juego {
 		}
 	}
 	
-	public void chequearPocimasParaCartas(Carta cartaGanador, Carta cartaPerdedor, String atributoElegido) {
-		double valorCartaGan = 0;
-		double valorCartaPer = 0;
-		
-		if(cartaGanador.getPocima()!=null) {
-			valorCartaGan = cartaGanador.getAtributo(atributoElegido).aplicarPocima(cartaGanador.getPocima());
-		}
-		else {
-			valorCartaGan = cartaGanador.valorDelAtributo(atributoElegido);
-		}
-		
-		if(cartaPerdedor.getPocima()!=null) {
-			valorCartaPer = cartaPerdedor.getAtributo(atributoElegido).aplicarPocima(cartaPerdedor.getPocima());
-		}
-		else {
-			valorCartaPer = cartaPerdedor.valorDelAtributo(atributoElegido);
-		}
-		
-		compararCartas(cartaGanador, cartaPerdedor, valorCartaGan, valorCartaPer);
-	}
-	
+
 	public void compararCartas(Carta cartaGanador, Carta cartaPerdedor, double valorCartaGan, double valorCartaPer) {
 		
 		if(valorCartaGan>valorCartaPer) {
