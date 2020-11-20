@@ -102,7 +102,7 @@ public class Juego {
 		double valorCartaGan = 0;
 		double valorCartaPer = 0;
 		
-		if(cartaPerdedor.getPocima()!=null) {
+		if(cartaGanador.getPocima()!=null) {
 			valorCartaGan = cartaGanador.getAtributo(atributoElegido).aplicarPocima(cartaGanador.getPocima());
 		}
 		else {
